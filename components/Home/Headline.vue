@@ -1,0 +1,9 @@
+<template>
+  <div>
+    <img
+      src="~/assets/images/PCCGB_KH_-D4B01559.png"
+      alt=""
+      class="img-fluid"
+    />
+  </div>
+</template>

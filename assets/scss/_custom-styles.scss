@@ -1,0 +1,181 @@
+/* stylelint-disable */
+@import url("https://use.typekit.net/dne1bad.css");
+
+h1,
+h2 {
+  font-family: co-headline, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.title {
+  font-family: co-headline, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.6rem;
+}
+
+.date {
+  font-family: co-headline, sans-serif;
+
+  font-weight: 300;
+
+  font-style: normal;
+}
+
+.championship {
+  font-family: co-headline, sans-serif;
+
+  font-weight: 400;
+
+  font-style: normal;
+  font-size: 1.3rem;
+}
+
+body,
+html {
+  font-family: co-headline, sans-serif;
+
+  font-weight: 300;
+
+  font-style: normal;
+  font-size: 1.05rem;
+}
+
+// Links
+.nav-link {
+  color: black;
+}
+
+.nav-tabs {
+  border-bottom: 0.25rem solid black;
+}
+
+.nav-tabs .nav-link:focus {
+  border-color: black;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: #4DB3E6;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: #4DB3E6;
+  text-decoration: none;
+}
+
+// Posts
+.quote {
+  transform: skew(40deg);
+  width: 300px;
+
+  h2 {
+    transform: skew(-40deg);
+  }
+}
+
+@media (min-width: 992px) {
+  .parallelogram {
+    transform: translateX(10%) skew(25deg);
+    width: 100%;
+
+    .title-content {
+      transform: skew(-25deg);
+    }
+  }
+
+  .quote {
+    transform: skew(40deg);
+    width: 300px;
+
+    h2 {
+      transform: skew(-40deg);
+    }
+  }
+
+  .name {
+    transform: translateY(-100%) skew(40deg);
+    width: 100%;
+
+    h3 {
+      transform: skew(-40deg);
+    }
+  }
+
+  .main-content {
+    padding-right: 20%;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .parallelogram {
+    transform: translateX(10%) skew(25deg);
+    width: 100%;
+
+    .title-content {
+      transform: skew(-25deg);
+    }
+  }
+}
+
+// Transistions
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.zoom-enter-active,
+.zoom-leave-active {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-name: zoom;
+}
+
+.zoom-leave-active {
+  animation-direction: reverse;
+}
+
+@keyframes zoom {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hovering {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}

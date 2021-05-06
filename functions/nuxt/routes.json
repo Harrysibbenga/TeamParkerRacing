@@ -1,0 +1,97 @@
+[
+  {
+    "name": "admin",
+    "path": "/admin",
+    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin.vue",
+    "chunkName": "pages/admin",
+    "children": [
+      {
+        "name": "admin-championships",
+        "path": "championships",
+        "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/championships.vue",
+        "chunkName": "pages/admin/championships",
+        "_name": "_e1ce19f2"
+      },
+      {
+        "name": "admin-drivers",
+        "path": "drivers",
+        "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/drivers.vue",
+        "chunkName": "pages/admin/drivers",
+        "_name": "_5cdcdba4"
+      },
+      {
+        "name": "admin-headline",
+        "path": "headline",
+        "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/headline.vue",
+        "chunkName": "pages/admin/headline",
+        "_name": "_9789f56a"
+      },
+      {
+        "name": "admin-posts",
+        "path": "posts",
+        "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/posts.vue",
+        "chunkName": "pages/admin/posts",
+        "children": [
+          {
+            "name": "admin-posts-featured",
+            "path": "featured",
+            "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/posts/featured.vue",
+            "chunkName": "pages/admin/posts/featured",
+            "_name": "_2d60ffbe"
+          },
+          {
+            "name": "admin-posts-news",
+            "path": "news",
+            "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/posts/news.vue",
+            "chunkName": "pages/admin/posts/news",
+            "_name": "_5d2cb1c6"
+          }
+        ],
+        "_name": "_57e1c26c"
+      }
+    ],
+    "_name": "_8ecf0130"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_50d0ce82"
+  },
+  {
+    "name": "news",
+    "path": "/news",
+    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/news.vue",
+    "chunkName": "pages/news",
+    "_name": "_6980eeca"
+  },
+  {
+    "name": "championship-slug",
+    "path": "/championship/:slug?",
+    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/championship/_slug.vue",
+    "chunkName": "pages/championship/_slug",
+    "_name": "_15307e57"
+  },
+  {
+    "name": "feature-slug",
+    "path": "/feature/:slug?",
+    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/feature/_slug.vue",
+    "chunkName": "pages/feature/_slug",
+    "_name": "_19a1056c"
+  },
+  {
+    "name": "post-slug",
+    "path": "/post/:slug?",
+    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/post/_slug.vue",
+    "chunkName": "pages/post/_slug",
+    "_name": "_a161f3dc"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_f1ada92a"
+  }
+]
