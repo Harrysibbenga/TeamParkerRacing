@@ -7,8 +7,8 @@
         Admin</NuxtLink
       >
     </div>
-    <nav id="main-nav" class="shrink">
-      <div class="d-flex justify-content-between p-3">
+    <nav id="main-nav" class="shrink bg-white">
+      <div class="d-flex justify-content-between p-3 flex-center">
         <NavigationBurger
           :toggle="isPanelOpen"
           @click.native="toggle()"
@@ -108,7 +108,7 @@ export default {
   transition: height 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 #main-nav {
-  position: fixed;
+  position: relative;
   width: 100%;
   z-index: 999;
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -162,12 +162,6 @@ export default {
 
 #main {
   transition: margin-left 0.5s;
-}
-
-.logo-back {
-  background-color: transparent;
-  height: auto;
-  padding: 5px 20px;
 }
 @media screen and (max-height: 450px) {
   .sidenav {
