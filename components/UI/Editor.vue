@@ -1,74 +1,40 @@
 <template>
   <div>
-    <ckeditor v-model="editorContent" :config="editorConfig"></ckeditor>
+    <ckeditor
+      :editor="editor"
+      :config="editorConfig"
+      :value="content"
+      @input="(content) => $emit('update:content', content)"
+    ></ckeditor>
   </div>
 </template>
 
 <script>
-import EssentialsPlugin from '@ckeditor/ckeditor5-essentials/src/essentials'
-import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough'
-import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline'
-import BoldPlugin from '@ckeditor/ckeditor5-basic-styles/src/bold'
-import ItalicPlugin from '@ckeditor/ckeditor5-basic-styles/src/italic'
-import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage'
-import ParagraphPlugin from '@ckeditor/ckeditor5-paragraph/src/paragraph'
-import HeadingPlugin from '@ckeditor/ckeditor5-heading/src/heading'
-import Image from '@ckeditor/ckeditor5-image/src/image'
-import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar'
-import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption'
-import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle'
-import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize'
-import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter'
-import Indent from '@ckeditor/ckeditor5-indent/src/indent'
-import BlockToolbar from '@ckeditor/ckeditor5-ui/src/toolbar/block/blocktoolbar'
-import Link from '@ckeditor/ckeditor5-link/src/link'
-import Table from '@ckeditor/ckeditor5-table/src/table'
-import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar'
-import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties'
-import TableCellProperties from '@ckeditor/ckeditor5-table/src/tablecellproperties'
-import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment'
-import Font from '@ckeditor/ckeditor5-font/src/font'
-import FontFamily from '@ckeditor/ckeditor5-font/src/fontfamily'
-import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat'
+let ClassicEditor
+let CKEditor
+
+if (process.client) {
+  ClassicEditor = require('@ckeditor/ckeditor5-build-classic')
+  CKEditor = require('@ckeditor/ckeditor5-vue2')
+} else {
+  CKEditor = { component: { template: '<div></div>' } }
+}
 
 export default {
+  components: {
+    ckeditor: CKEditor.component,
+  },
   props: {
     content: {
       type: String,
       required: true,
+      default: 'Enter text here',
     },
   },
   data() {
     return {
-      editorContent: 'Enter content here',
+      editor: ClassicEditor,
       editorConfig: {
-        plugins: [
-          Base64UploadAdapter,
-          EssentialsPlugin,
-          BoldPlugin,
-          ItalicPlugin,
-          EasyImage,
-          ParagraphPlugin,
-          HeadingPlugin,
-          Image,
-          ImageToolbar,
-          ImageCaption,
-          ImageStyle,
-          ImageResize,
-          Strikethrough,
-          Underline,
-          Indent,
-          BlockToolbar,
-          Link,
-          Table,
-          TableToolbar,
-          TableProperties,
-          TableCellProperties,
-          Alignment,
-          Font,
-          FontFamily,
-          Autoformat,
-        ],
         fontFamily: {
           options: [
             'default',
@@ -281,11 +247,6 @@ export default {
         },
       },
     }
-  },
-  watch: {
-    editorContent(newVal, oldVal) {
-      this.$emit('update:content', newVal)
-    },
   },
 }
 </script>
