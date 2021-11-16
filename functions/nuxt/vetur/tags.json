@@ -5,6 +5,15 @@
   "Logo": {
     "description": "Auto imported from components/logo.vue"
   },
+  "DashboardChampionship": {
+    "description": "Auto imported from components/Dashboard/Championship.vue"
+  },
+  "DashboardDrivers": {
+    "description": "Auto imported from components/Dashboard/Drivers.vue"
+  },
+  "DashboardWelcome": {
+    "description": "Auto imported from components/Dashboard/Welcome.vue"
+  },
   "FeaturedBody": {
     "description": "Auto imported from components/Featured/Body.vue"
   },
@@ -14,14 +23,77 @@
   "FeaturedHead": {
     "description": "Auto imported from components/Featured/Head.vue"
   },
-  "DashboardChampionship": {
-    "description": "Auto imported from components/Dashboard/Championship.vue"
+  "HomeCarousel": {
+    "description": "Auto imported from components/Home/Carousel.vue"
   },
-  "DashboardDrivers": {
-    "description": "Auto imported from components/Dashboard/Drivers.vue"
+  "HomeChampionship": {
+    "description": "Auto imported from components/Home/Championship.vue"
   },
-  "DashboardWelcome": {
-    "description": "Auto imported from components/Dashboard/Welcome.vue"
+  "HomeContact": {
+    "description": "Auto imported from components/Home/Contact.vue"
+  },
+  "HomeHeadline": {
+    "description": "Auto imported from components/Home/Headline.vue"
+  },
+  "HomeLatest": {
+    "description": "Auto imported from components/Home/Latest.vue"
+  },
+  "HomeMap": {
+    "description": "Auto imported from components/Home/Map.vue"
+  },
+  "HomeSocial": {
+    "description": "Auto imported from components/Home/Social.vue"
+  },
+  "HomeSubscribe": {
+    "description": "Auto imported from components/Home/Subscribe.vue"
+  },
+  "HomeUpcoming": {
+    "description": "Auto imported from components/Home/Upcoming.vue"
+  },
+  "HomeVideo": {
+    "description": "Auto imported from components/Home/Video.vue"
+  },
+  "NavigationBurger": {
+    "description": "Auto imported from components/Navigation/Burger.vue"
+  },
+  "NavigationSideNav": {
+    "description": "Auto imported from components/Navigation/SideNav.vue"
+  },
+  "ModalsSubscribeModal": {
+    "description": "Auto imported from components/Modals/SubscribeModal.vue"
+  },
+  "SectionSubscribe": {
+    "description": "Auto imported from components/Section/subscribe.vue"
+  },
+  "UiCard": {
+    "description": "Auto imported from components/Ui/Card.vue"
+  },
+  "UiEditor": {
+    "description": "Auto imported from components/Ui/Editor.vue"
+  },
+  "UiLoader": {
+    "description": "Auto imported from components/Ui/Loader.vue"
+  },
+  "UiMessage": {
+    "description": "Auto imported from components/Ui/Message.vue"
+  },
+  "UiMultiUpload": {
+    "description": "Auto imported from components/Ui/MultiUpload.vue"
+  },
+  "UiTags": {
+    "description": "Auto imported from components/Ui/Tags.vue"
+  },
+  "UiTimer": {
+    "description": "Auto imported from components/Ui/Timer.vue"
+  },
+  "DashboardPostsArticles": {
+    "description": "Auto imported from components/Dashboard/Posts/Articles.vue"
+  },
+  "DashboardPostsFeatured": {
+    "description": "Auto imported from components/Dashboard/Posts/Featured.vue"
+  },
+  "DashboardPosts": {
+    "description": "Auto imported from components/Dashboard/Posts/index.vue"
   },
   "HeadlineCarousel": {
     "description": "Auto imported from components/Headline/Carousel.vue"
@@ -58,77 +130,5 @@
   },
   "HelpersVideoHandler": {
     "description": "Auto imported from components/Helpers/videoHandler.vue"
-  },
-  "HomeCarousel": {
-    "description": "Auto imported from components/Home/Carousel.vue"
-  },
-  "HomeChampionship": {
-    "description": "Auto imported from components/Home/Championship.vue"
-  },
-  "HomeContact": {
-    "description": "Auto imported from components/Home/Contact.vue"
-  },
-  "HomeHeadline": {
-    "description": "Auto imported from components/Home/Headline.vue"
-  },
-  "HomeLatest": {
-    "description": "Auto imported from components/Home/Latest.vue"
-  },
-  "HomeMap": {
-    "description": "Auto imported from components/Home/Map.vue"
-  },
-  "HomeSocial": {
-    "description": "Auto imported from components/Home/Social.vue"
-  },
-  "HomeSubscribe": {
-    "description": "Auto imported from components/Home/Subscribe.vue"
-  },
-  "HomeUpcoming": {
-    "description": "Auto imported from components/Home/Upcoming.vue"
-  },
-  "HomeVideo": {
-    "description": "Auto imported from components/Home/Video.vue"
-  },
-  "ModalsSubscribeModal": {
-    "description": "Auto imported from components/Modals/SubscribeModal.vue"
-  },
-  "NavigationBurger": {
-    "description": "Auto imported from components/Navigation/Burger.vue"
-  },
-  "NavigationSideNav": {
-    "description": "Auto imported from components/Navigation/SideNav.vue"
-  },
-  "SectionSubscribe": {
-    "description": "Auto imported from components/Section/subscribe.vue"
-  },
-  "UiCard": {
-    "description": "Auto imported from components/Ui/Card.vue"
-  },
-  "UiEditor": {
-    "description": "Auto imported from components/Ui/Editor.vue"
-  },
-  "UiLoader": {
-    "description": "Auto imported from components/Ui/Loader.vue"
-  },
-  "UiMessage": {
-    "description": "Auto imported from components/Ui/Message.vue"
-  },
-  "UiMultiUpload": {
-    "description": "Auto imported from components/Ui/MultiUpload.vue"
-  },
-  "UiTags": {
-    "description": "Auto imported from components/Ui/Tags.vue"
-  },
-  "UiTimer": {
-    "description": "Auto imported from components/Ui/Timer.vue"
-  },
-  "DashboardPostsArticles": {
-    "description": "Auto imported from components/Dashboard/Posts/Articles.vue"
-  },
-  "DashboardPostsFeatured": {
-    "description": "Auto imported from components/Dashboard/Posts/Featured.vue"
-  },
-  "DashboardPosts": {
-    "description": "Auto imported from components/Dashboard/Posts/index.vue"
   }
 }

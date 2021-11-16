@@ -17,7 +17,7 @@
       </mdb-row>
       <mdb-row class="pl-5 main-content">
         <mdb-col col="12 pt-2">
-          <span class="date">{{ post.date }}</span>
+          <span class="date">{{ post.date | formatDate }}</span>
           <h5 v-if="post.championship" class="championship pt-3">
             {{ post.championship }}
           </h5>
@@ -91,6 +91,7 @@
 <script>
 import { mdbContainer, mdbRow, mdbCol } from 'mdbvue'
 import { Hooper, Slide, Navigation } from 'hooper'
+import moment from 'moment'
 
 export default {
   name: 'Post',
@@ -101,6 +102,11 @@ export default {
     Hooper,
     Slide,
     Navigation,
+  },
+  filters: {
+    formatDate(value) {
+      return moment(value).format('DD-MM-YYYY')
+    }
   },
   data() {
     return {
@@ -152,6 +158,6 @@ export default {
   },
   destroyed() {
     this.$store.commit('posts/clearPost')
-  },
+  }
 }
 </script>

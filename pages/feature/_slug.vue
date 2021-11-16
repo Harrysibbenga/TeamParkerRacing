@@ -1,7 +1,7 @@
 <template>
   <div>
-    <FeaturedHead :post="post" class="text-center w-100 m-auto"></FeaturedHead>
-    <FeaturedBody :post="post"></FeaturedBody>
+    <FeaturedHead :post="post" class="text-center w-100 m-auto" />
+    <FeaturedBody :post="post" />
   </div>
 </template>
 

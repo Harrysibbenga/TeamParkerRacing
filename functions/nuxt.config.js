@@ -85,6 +85,12 @@ module.exports = {
     middleware: ['auth'],
   },
 
+  render: {
+    bundleRenderer: {
+      runInNewContext: false,
+    },
+  },
+
   vue: {
     config: {
       productionTip: false,

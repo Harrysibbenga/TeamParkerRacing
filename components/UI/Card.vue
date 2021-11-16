@@ -19,7 +19,7 @@
       <mdb-card-title v-else class="pt-2">
         {{ post.title }}
       </mdb-card-title>
-      <mdb-card-text>{{ post.date }}</mdb-card-text>
+      <mdb-card-text>{{ post.date | formatDate }}</mdb-card-text>
       <mdb-card-text>{{ post.excerpt }}</mdb-card-text>
       <NuxtLink
         v-if="post.type == 'championship'"
@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 import {
   mdbCard,
   mdbCardImage,
@@ -67,6 +69,11 @@ export default {
     mdbCardTitle,
     mdbCardText,
     mdbCardBody,
+  },
+  filters: {
+    formatDate(value) {
+      return moment(value).format('DD-MM-YYYY')
+    }
   },
   props: {
     post: {
