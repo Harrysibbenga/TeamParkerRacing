@@ -13,10 +13,9 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_3732603d from 'nuxt_plugin_plugin_3732603d' // Source: ./components/plugin.js (mode: 'all')
-import nuxt_plugin_bootstrapvue_487f9a02 from 'nuxt_plugin_bootstrapvue_487f9a02' // Source: ./bootstrap-vue.js (mode: 'all')
-import nuxt_plugin_axios_469d3ed3 from 'nuxt_plugin_axios_469d3ed3' // Source: ./axios.js (mode: 'all')
-import nuxt_plugin_hooper_6082fa6a from 'nuxt_plugin_hooper_6082fa6a' // Source: ../plugins/hooper (mode: 'client')
+import nuxt_plugin_plugin_66b02337 from 'nuxt_plugin_plugin_66b02337' // Source: ./components/plugin.js (mode: 'all')
+import nuxt_plugin_bootstrapvue_5df9e9fc from 'nuxt_plugin_bootstrapvue_5df9e9fc' // Source: ./bootstrap-vue.js (mode: 'all')
+import nuxt_plugin_axios_7387ae66 from 'nuxt_plugin_axios_7387ae66' // Source: ./axios.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -45,7 +44,11 @@ Vue.component(Nuxt.name, Nuxt)
 
 Object.defineProperty(Vue.prototype, '$nuxt', {
   get() {
-    return this.$root.$options.$nuxt
+    const globalNuxt = this.$root.$options.$nuxt
+    if (process.client && !globalNuxt && typeof window !== 'undefined') {
+      return window.$nuxt
+    }
+    return globalNuxt
   },
   configurable: true
 })
@@ -80,7 +83,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"Team Parker Racing | Official Website","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Team Parker Racing is a British racing team that competes in many different motorsport chamiponships."},{"property":"og:title","content":"Team Parker Racing - Official website"},{"property":"og:description","content":"Team Parker Racing is a British racing team that competes in many different motorsport chamiponships."},{"property":"og:url","content":"https:\u002F\u002Fteamparkerracing.com\u002F"},{"property":"og:image","content":"https:\u002F\u002Ffirebasestorage.googleapis.com\u002Fv0\u002Fb\u002Fteam-parker-racing.appspot.com\u002Fo\u002Flogo%2FTPR%20Logo.png?alt=media&token=b45d4815-0394-40dd-9a5e-41c8e8124546"},{"property":"og:site_name","content":"Team Parker Racing"},{"property":"og:type","content":"website"},{"name":"robots","content":"index,follow"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"script":[{"src":"https:\u002F\u002Fapps.elfsight.com\u002Fp\u002Fplatform.js","defer":true},{"hid":"mailchimp1","type":"text\u002Fjavascript","src":"\u002F\u002Fs3.amazonaws.com\u002Fdownloads.mailchimp.com\u002Fjs\u002Fmc-validate.js"},{"hid":"mailchimp2","innerHTML":"\n        (function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);\n        ","type":"text\u002Fjavascript","charset":"utf-8"}],"style":[]},
+    head: {"title":"Team Parker Racing | Official Website","htmlAttrs":{"lang":"en"},"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Team Parker Racing is a British racing team that competes in many different motorsport chamiponships."},{"property":"og:title","content":"Team Parker Racing - Official website"},{"property":"og:description","content":"Team Parker Racing is a British racing team that competes in many different motorsport chamiponships."},{"property":"og:url","content":"https:\u002F\u002Fteamparkerracing.com\u002F"},{"property":"og:image","content":"https:\u002F\u002Ffirebasestorage.googleapis.com\u002Fv0\u002Fb\u002Fteam-parker-racing.appspot.com\u002Fo\u002Flogo%2FTPR%20Logo.png?alt=media&token=b45d4815-0394-40dd-9a5e-41c8e8124546"},{"property":"og:site_name","content":"Team Parker Racing"},{"property":"og:type","content":"website"},{"name":"robots","content":"index,follow"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"script":[{"src":"https:\u002F\u002Fapps.elfsight.com\u002Fp\u002Fplatform.js","defer":true},{"hid":"mailchimp1","type":"text\u002Fjavascript","src":"\u002F\u002Fs3.amazonaws.com\u002Fdownloads.mailchimp.com\u002Fjs\u002Fmc-validate.js"},{"hid":"mailchimp2","innerHTML":"\n        (function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);\n        ","type":"text\u002Fjavascript","charset":"utf-8"},{"src":"https:\u002F\u002Fwww.googletagmanager.com\u002Fgtag\u002Fjs?id=G-P0W1M0FBQ3","async":true},{"hid":"gtag","type":"text\u002Fjavascript","charset":"utf-8","innerHTML":"\n        window.dataLayer = window.dataLayer || [];\n        function gtag(){dataLayer.push(arguments);}\n        gtag('js', new Date());\n        gtag('config', 'G-P0W1M0FBQ3')\n        "}],"style":[]},
 
     store,
     router,
@@ -209,20 +212,16 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_3732603d === 'function') {
-    await nuxt_plugin_plugin_3732603d(app.context, inject)
+  if (typeof nuxt_plugin_plugin_66b02337 === 'function') {
+    await nuxt_plugin_plugin_66b02337(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_bootstrapvue_487f9a02 === 'function') {
-    await nuxt_plugin_bootstrapvue_487f9a02(app.context, inject)
+  if (typeof nuxt_plugin_bootstrapvue_5df9e9fc === 'function') {
+    await nuxt_plugin_bootstrapvue_5df9e9fc(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_469d3ed3 === 'function') {
-    await nuxt_plugin_axios_469d3ed3(app.context, inject)
-  }
-
-  if (process.client && typeof nuxt_plugin_hooper_6082fa6a === 'function') {
-    await nuxt_plugin_hooper_6082fa6a(app.context, inject)
+  if (typeof nuxt_plugin_axios_7387ae66 === 'function') {
+    await nuxt_plugin_axios_7387ae66(app.context, inject)
   }
 
   // Lock enablePreview in context
@@ -232,26 +231,33 @@ async function createApp(ssrContext, config = {}) {
     }
   }
 
-  // If server-side, wait for async component to be resolved first
-  if (process.server && ssrContext && ssrContext.url) {
-    await new Promise((resolve, reject) => {
-      router.push(ssrContext.url, resolve, (err) => {
-        // https://github.com/vuejs/vue-router/blob/v3.4.3/src/util/errors.js
-        if (!err._isRouter) return reject(err)
-        if (err.type !== 2 /* NavigationFailureType.redirected */) return resolve()
+  // Wait for async component to be resolved first
+  await new Promise((resolve, reject) => {
+    // Ignore 404s rather than blindly replacing URL in browser
+    if (process.client) {
+      const { route } = router.resolve(app.context.route.fullPath)
+      if (!route.matched.length) {
+        return resolve()
+      }
+    }
+    router.replace(app.context.route.fullPath, resolve, (err) => {
+      // https://github.com/vuejs/vue-router/blob/v3.4.3/src/util/errors.js
+      if (!err._isRouter) return reject(err)
+      if (err.type !== 2 /* NavigationFailureType.redirected */) return resolve()
 
-        // navigated to a different route in router guard
-        const unregister = router.afterEach(async (to, from) => {
+      // navigated to a different route in router guard
+      const unregister = router.afterEach(async (to, from) => {
+        if (process.server && ssrContext && ssrContext.url) {
           ssrContext.url = to.fullPath
-          app.context.route = await getRouteData(to)
-          app.context.params = to.params || {}
-          app.context.query = to.query || {}
-          unregister()
-          resolve()
-        })
+        }
+        app.context.route = await getRouteData(to)
+        app.context.params = to.params || {}
+        app.context.query = to.query || {}
+        unregister()
+        resolve()
       })
     })
-  }
+  })
 
   return {
     store,

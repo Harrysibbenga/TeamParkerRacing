@@ -8,22 +8,22 @@
             :alt="item.logoAlt"
             class="img-fluid"
             @click="show(item, index)"
-          />
+          >
         </div>
       </div>
       <transition name="fade" mode="out-in">
-        <div class="col-8 p-0" v-if="champ">
-          <img :src="champ.url" :alt="champ.alt" class="img-fluid" />
-          
-          <div class="position-absolute d-flex flex-row align-items-center" id="timer">
-            <router-link :to="`championship/${champ.slug}`" class="p-5 mr-auto">
+        <div v-if="champ" class="col-8 p-0">
+          <img :src="champ.url" :alt="champ.alt" class="img-fluid">
+
+          <div id="timer" class="position-absolute d-flex flex-row align-items-center">
+            <nuxt-link :to="`championship/${champ.slug}`" class="p-5 mr-auto">
               <img
                 :src="champ.logoUrl"
                 :alt="champ.logoAlt"
                 class="img-fluid"
-              />
-            </router-link>
-            <app-timer v-if="champ.fixture" :deadline="champ.fixture.dateFrom" :live="champ.fixture.dateTo"></app-timer>
+              >
+            </nuxt-link>
+            <ui-timer v-if="champ.fixture" :deadline="champ.fixture.dateFrom" :live="champ.fixture.dateTo" />
           </div>
         </div>
       </transition>
@@ -47,20 +47,28 @@ export default {
       return this.$store.getters["championships/getPosts"];
     },
   },
+  created(){
+    setTimeout(() => {
+      this.champ = this.champValue(this.championships[0])
+      this.selected = 0
+    },800)
+  },
+  mounted(){
+    this.iterate(true)
+  },
   methods: {
     champValue(item) {
-        let now = new Date(new Date().toDateString());
-        let ongoing = [];
+        const now = new Date(new Date().toDateString());
+        const ongoing = [];
         item.fixtures.forEach(fixture => {
           if(moment(fixture.dateFrom).toDate() >= now) {
             ongoing.push(fixture)
           }
         })
-        let champ = {
+        const champ = {
           slug: item.slug,
           url: item.url,
           alt: item.alt,
-          logoUrl: item.logoUrl,
           logoUrl: item.logoUrl,
           fixture: ongoing[0]
         }
@@ -77,9 +85,9 @@ export default {
       if(start) {
          this.timer = setInterval(() => {
           i += 1
-          if(i == this.championships.length) {
+          if(i === this.championships.length) {
             i = 0
-          } 
+          }
           this.selected = i
           this.reset(this.champValue(this.championships[i]))
         },5000)
@@ -92,15 +100,6 @@ export default {
       this.selected = index
       this.iterate(false)
     },
-  },
-  created(){
-    setTimeout(() => {
-      this.champ = this.champValue(this.championships[0])
-      this.selected = 0
-    },800)
-  },
-  mounted(){
-    this.iterate(true)
   }
 };
 </script>

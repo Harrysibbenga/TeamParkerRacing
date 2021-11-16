@@ -5,7 +5,7 @@
       :config="editorConfig"
       :value="content"
       @input="(content) => $emit('update:content', content)"
-    ></ckeditor>
+    />
   </div>
 </template>
 

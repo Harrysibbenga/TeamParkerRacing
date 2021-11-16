@@ -1,9 +1,11 @@
+import moment from 'moment'
 import { postsCollection } from '@/services/firebase'
 
 export const state = () => ({
   allPosts: [],
   post: null,
   postsByYear: [],
+  publishedPosts: [],
 })
 
 export const mutations = {
@@ -26,6 +28,13 @@ export const mutations = {
       state.post = val
     } else {
       state.post = null
+    }
+  },
+  setPublishedPosts(state, val) {
+    if (val) {
+      state.publishedPosts = val
+    } else {
+      state.publishedPosts = null
     }
   },
   clearPost(state) {
@@ -67,15 +76,33 @@ export const actions = {
   },
   setPosts({ commit }) {
     postsCollection.orderBy('date', 'desc').onSnapshot((querySnapshot) => {
+      const now = moment().format()
       const postsArray = []
 
       querySnapshot.forEach((doc) => {
         const post = doc.data()
         post.id = doc.id
         post.type = 'post'
+        if (!post.published) {
+          postsCollection
+            .doc(doc.id)
+            .update({
+              published: now,
+            })
+            .then(function () {
+              console.log('Document successfully updated!')
+            })
+            .catch(function (error) {
+              console.error('Error updating document: ', error)
+            })
+        }
         postsArray.push(post)
       })
       commit('setPosts', postsArray)
+      commit(
+        'setPublishedPosts',
+        postsArray.filter((post) => now >= post.published)
+      )
     })
   },
   setPostsByYear({ commit }, year) {
@@ -105,5 +132,8 @@ export const getters = {
   },
   getPostsByYear(state) {
     return state.postsByYear
+  },
+  getPublishedPosts(state) {
+    return state.publishedPosts
   },
 }

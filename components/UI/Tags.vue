@@ -1,17 +1,19 @@
 <template>
   <div>
-    <multiselect :options="options" :value="tags" @input="(tags) => $emit('update:tags', tags)"
-    :multiple="true"
-    tag-placeholder="Add this as new tag"
-    placeholder="Select or create tags for this post"
-    label="name"
-    track-by="name"
-    :taggable="true"
-    @tag="addTag"
-    :clear-on-select="false"
-    :close-on-select="false"
-    >
-    </multiselect>
+    <multiselect
+      :options="options"
+      :value="tags"
+      :multiple="true"
+      tag-placeholder="Add this as new tag"
+      placeholder="Select or create tags for this post"
+      label="name"
+      track-by="name"
+      :taggable="true"
+      :clear-on-select="false"
+      :close-on-select="false"
+      @input="(tags) => $emit('update:tags', tags)"
+      @tag="addTag"
+    />
   </div>
 </template>
 
@@ -20,19 +22,19 @@
 
   export default {
     name: 'Tags',
-    props: ["tags"],
     components: {
       Multiselect
+    },
+    props: ["tags"],
+    data() {
+      return {
+        value: [],
+      };
     },
     computed: {
         options(){
             return this.$store.getters['tags/getTags']
         }
-    },
-    data() {
-      return {
-        value: [],
-      };
     },
     methods: {
         addTag (newTag) {

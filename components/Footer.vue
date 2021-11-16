@@ -1,9 +1,11 @@
 <template>
   <footer class="bottom text-secondary bg-primary">
-    <mdb-container class="pt-5">
-      <mdb-row>
-        <mdb-col md="8" class="text-white">
-          <h5 class="font-weight-bold">Team Parker Racing</h5>
+    <mdb-container fluid class="pt-5">
+      <mdb-row class="d-flex flex-center">
+        <mdb-col md="4" class="text-white">
+          <h5 class="font-weight-bold">
+            Team Parker Racing
+          </h5>
           <p class="pt-4">
             Team Parker Racing is a motorsport team based in Leicestershire, in
             the United Kingdom. Founded in 1997 it has previously competed in
@@ -18,62 +20,110 @@
             and other exciting plans yet to be announced.
           </p>
         </mdb-col>
+        <mdb-col md="4" class="text-white">
+          <Logo class="mx-auto my-5" />
+          <section-subscribe class="pt-16" />
+          <!-- <mdb-row
+            style="width: 400px"
+            class="mx-auto d-flex align-content-center justify-content-center"
+          >
+            <a class="text-decoration-none white--text">Careers</a>
+            <div color="white" class="px-5"> | </div>
+            <a class="text-decoration-none white--text">Privacy Policy</a>
+          </mdb-row> -->
+        </mdb-col>
         <mdb-col md="4" class="text-center">
-          <h5 class="font-weight-bold text-white">Follow us</h5>
-          <ul class="list-unstyled">
-            <li class="list-item py-2">
-              <a
-                class="p-2 fa-lg w-ic"
-                href="https://twitter.com/teamparkeracing"
-                target="_blank"
-              >
-                <mdb-icon fab icon="twitter" class="text-secondary" />
-              </a>
-            </li>
-            <li class="list-item pb-2">
-              <a
-                class="p-2 fa-lg w-ic"
-                href="https://www.linkedin.com/company/team-parker-racing-ltd/"
-                target="_blank"
-              >
-                <mdb-icon fab icon="linkedin" class="text-secondary" />
-              </a>
-            </li>
-            <li class="list-item pb-2">
-              <a
-                class="p-2 fa-lg w-ic"
-                href="https://www.instagram.com/teamparkerracing/"
-                target="_blank"
-              >
-                <mdb-icon fab icon="instagram" class="text-secondary" />
-              </a>
-            </li>
-            <li class="list-item pb-2">
-              <a
-                class="p-2 fa-lg w-ic"
-                href="https://www.facebook.com/TeamParkerRacing/"
-                target="_blank"
-              >
-                <mdb-icon fab icon="facebook" class="text-secondary" />
-              </a>
-            </li>
-          </ul>
+          <a
+            href="tel:01455 822 686"
+            class="h1 text-decoration-none text-white"
+          >01455 822 686</a>
+          <h5 class="font-weight-bold text-white pt-5">
+            Follow us
+          </h5>
+          <mdb-row>
+            <mdb-col col="6">
+              <div class="text-right text-white">
+                <div class="mt-2">
+                  <a
+                    href="https://www.instagram.com/teamparkerracing/"
+                    target="_blank"
+                  >
+                    <p class="my-auto">Instagram</p>
+                  </a>
+                </div>
+                <div class="mt-2">
+                  <a
+                    href="https://www.linkedin.com/company/team-parker-racing-ltd/"
+                    target="_blank"
+                  >
+                    <p class="my-auto">LinkedIn</p>
+                  </a>
+                </div>
+                <div class="mt-2">
+                  <a
+                    href="https://www.facebook.com/TeamParkerRacing/"
+                    target="_blank"
+                  >
+                    <p class="my-auto">Facebook</p>
+                  </a>
+                </div>
+                <div class="mt-2">
+                  <a
+                    href="https://twitter.com/teamparkeracing"
+                    target="_blank"
+                  >
+                    <p class="my-auto">Twitter</p>
+                  </a>
+                </div>
+              </div>
+            </mdb-col>
+            <mdb-col col="6">
+              <div class="text-left">
+                <div class="my-2">
+                  <a
+                    class="fa-lg w-ic"
+                    href="https://www.instagram.com/teamparkerracing/"
+                    target="_blank"
+                  >
+                    <mdb-icon fab icon="instagram" class="text-white" />
+                  </a>
+                </div>
+                <div class="my-2">
+                  <a
+                    class="fa-lg w-ic"
+                    href="https://www.linkedin.com/company/team-parker-racing-ltd/"
+                    target="_blank"
+                  >
+                    <mdb-icon fab icon="linkedin" class="text-white" />
+                  </a>
+                </div>
+                <div class="my-2">
+                  <a
+                    class="fa-lg w-ic"
+                    href="https://www.facebook.com/TeamParkerRacing/"
+                    target="_blank"
+                  >
+                    <mdb-icon fab icon="facebook" class="text-white" />
+                  </a>
+                </div>
+                <div class="my-2">
+                  <a
+                    class="fa-lg w-ic"
+                    href="https://twitter.com/teamparkeracing"
+                    target="_blank"
+                  >
+                    <mdb-icon fab icon="twitter" class="text-white" />
+                  </a>
+                </div>
+              </div>
+            </mdb-col>
+          </mdb-row>
         </mdb-col>
       </mdb-row>
-      <mdb-row class="align-items-center">
-        <mdb-col col="12" md="6" class="text-center pt-2">
-          &copy; 2020 Copyright:
-          <a href="http://www.torquetogether.com/" target="_blank"
-            >Torque Motorsport Ltd</a
-          >
-        </mdb-col>
-        <mdb-col class="text-center pt-2" col="12" md="6">
-          <p>Powered by</p>
-          <img
-            :src="require('../assets/Torquelogo.png')"
-            alt="Torque motorsport logo"
-          />
-        </mdb-col>
+      <mdb-row>
+        <span
+          class="mx-auto pa-4 mt-5 text-white"
+        >&copy; Torque Motorsport Limited {{ new Date().getFullYear() }}</span>
       </mdb-row>
     </mdb-container>
   </footer>

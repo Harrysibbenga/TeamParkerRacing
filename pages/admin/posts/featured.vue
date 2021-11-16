@@ -1,74 +1,58 @@
 <template>
   <div>
-    <h1 class="text-center w-100">Featured Articles</h1>
+    <h1 class="text-center w-100">
+      Featured Articles
+    </h1>
     <mdb-container>
       <mdb-row>
         <mdb-col class="text-center pt-2" col="12">
-          <img
-            v-if="post.url"
-            :src="post.url"
-            :alt="post.alt"
-            class="img-fluid"
-          />
-
-          <img
-            v-else
-            :src="defaultImage"
-            alt="Placeholder image"
-            class="img-fluid"
-          />
+          <helpers-image-handler :image.sync="post.img" :image-list="images" />
         </mdb-col>
 
         <mdb-col col="12">
-          <form class="pt-2" @submit.prevent="submitForm">
-            <div class="row">
-              <div class="md-form col-4 p-0">
-                <mdb-btn
-                  color="primary"
-                  class="ml-3"
-                  inline
-                  @click.native="newImage('headline')"
-                  >Headline Image</mdb-btn
-                >
-              </div>
-
-              <div class="md-form col-12">
-                <mdb-input v-model.trim="post.date" type="date" inline />
-              </div>
+          <div class="row">
+            <div class="md-form col-12">
+              <mdb-input v-model.trim="post.date" type="date" inline />
             </div>
+          </div>
 
-            <div class="md-form">
-              <mdb-input v-model.trim="post.title" label="Title" inline />
-            </div>
+          <div class="md-form">
+            <mdb-input v-model.trim="post.title" label="Title" inline />
+          </div>
 
-            <div class="md-form">
-              <mdb-input
-                v-model.trim="post.excerpt"
-                label="Excerpt (used for meta)"
-                inline
-              />
-            </div>
+          <div class="md-form">
+            <mdb-input
+              v-model.trim="post.excerpt"
+              label="Excerpt (used for meta)"
+              inline
+            />
+          </div>
 
-            <div class="md-form">
-              <mdb-input v-model.trim="post.type" label="Type" inline />
-            </div>
+          <div class="md-form">
+            <mdb-input v-model.trim="post.type" label="Type" inline />
+          </div>
 
-            <mdb-col col="12">
-              <app-editor :content.sync="post.content"></app-editor>
-            </mdb-col>
+          <mdb-col col="12">
+            <ui-editor :content.sync="post.content" />
+          </mdb-col>
 
-            <mdb-col col="12" class="py-3">
-              <tags :tags.sync="post.tags"></tags>
-            </mdb-col>
+          <mdb-col col="12" class="py-3">
+            <ui-tags :tags.sync="post.tags" />
+          </mdb-col>
 
-            <mdb-btn color="primary" type="submit">Add Post</mdb-btn>
-          </form>
+          <mdb-col col="12" class="py-3">
+            <helpers-scheduling :publish-date.sync="post.published" />
+          </mdb-col>
+
+          <mdb-btn color="primary" @click.native="submitForm">
+            Add Post
+          </mdb-btn>
         </mdb-col>
       </mdb-row>
     </mdb-container>
 
     <transition name="fade">
-      <app-message :msg="msg"></app-message>
+      <ui-message :msg="msg" />
     </transition>
 
     <mdb-container fluid class="p-0 pt-5">
@@ -77,14 +61,22 @@
           <table class="table">
             <thead class="black text-white">
               <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Date</th>
-                <th scope="col">Action</th>
+                <th scope="col">
+                  Title
+                </th>
+                <th scope="col">
+                  Date
+                </th>
+                <th scope="col">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(post, index) in paginatedData" :key="index">
-                <th scope="row">{{ post.title }}</th>
+                <th scope="row">
+                  {{ post.title }}
+                </th>
                 <td>{{ post.date | formatDate }}</td>
                 <td>
                   <a class="mr-1" @click="editPost(post)">
@@ -130,19 +122,9 @@
         <mdb-modal-title>{{ clickedPost.title }}</mdb-modal-title>
       </mdb-modal-header>
       <mdb-modal-body>
-        <form class="p-2 container-fluid" @submit.prevent>
-          <mdb-row>
-            <mdb-col col="12">
-              <img
-                v-if="clickedPost.url"
-                :src="clickedPost.url"
-                class="img-fluid"
-              />
-            </mdb-col>
-
-            <mdb-btn color="primary" @click.native="newImage('editHeadline')"
-              >Change image</mdb-btn
-            >
+        <mdb-row>
+          <mdb-col col="12">
+            <helpers-image-handler :image.sync="clickedPost.img" :image-list="images" />
 
             <div class="md-form col-md-6 col-lg-4 p-0">
               <mdb-input v-model.trim="clickedPost.date" type="date" inline />
@@ -169,23 +151,31 @@
             </div>
 
             <div class="md-form">
-              <app-editor :content.sync="clickedPost.content"></app-editor>
+              <ui-editor :content.sync="clickedPost.content" />
             </div>
 
             <mdb-col col="12" class="py-3">
-              <tags :tags.sync="clickedPost.tags"></tags>
+              <ui-tags :tags.sync="clickedPost.tags" />
             </mdb-col>
-          </mdb-row>
-        </form>
+
+            <mdb-col col="12" class="py-3">
+              <helpers-scheduling :publish-date.sync="clickedPost.published" />
+            </mdb-col>
+          </mdb-col>
+        </mdb-row>
       </mdb-modal-body>
       <mdb-container>
         <transition name="fade">
-          <app-message :msg="editMsg"></app-message>
+          <ui-message :msg="editMsg" />
         </transition>
       </mdb-container>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" @click.native="cancelEdit">Close</mdb-btn>
-        <mdb-btn color="primary" @click.native="saveEdit">Save changes</mdb-btn>
+        <mdb-btn color="secondary" @click.native="cancelEdit">
+          Close
+        </mdb-btn>
+        <mdb-btn color="primary" @click.native="saveEdit">
+          Save changes
+        </mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
@@ -198,12 +188,16 @@
       @close="deleteModal = false"
     >
       <mdb-modal-body class="text-center">
-        <span class="text-danger"
-          >Are you sure you want to delete this post</span
-        >
+        <span
+          class="text-danger"
+        >Are you sure you want to delete this post</span>
         {{ toDeletePost.title }}
-        <mdb-btn color="secondary" @click.native="cancelDelete">Close</mdb-btn>
-        <mdb-btn color="danger" @click.native="confirmDelete">Delete</mdb-btn>
+        <mdb-btn color="secondary" @click.native="cancelDelete">
+          Close
+        </mdb-btn>
+        <mdb-btn color="danger" @click.native="confirmDelete">
+          Delete
+        </mdb-btn>
       </mdb-modal-body>
     </mdb-modal>
 
@@ -216,21 +210,29 @@
         <div class="row col-12 col-md-6 col-lg-4 py-3">
           <p>Would you like to use this one ?</p>
         </div>
-        <img :src="img.content.url" :alt="img.content.alt" class="img-fluid" />
+        <img :src="img.content.url" :alt="img.content.alt" class="img-fluid">
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" size="sm" @click.native="declineUse"
-          >No</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="sm"
+          @click.native="declineUse"
         >
-        <mdb-btn color="primary" size="sm" @click.native="confirmUse"
-          >Yes</mdb-btn
+          No
+        </mdb-btn>
+        <mdb-btn
+          color="primary"
+          size="sm"
+          @click.native="confirmUse"
         >
+          Yes
+        </mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
     <!-- uploadImage -->
     <mdb-modal size="md" :show="uploadImage" @close="closeImageUpload">
-      <app-loader></app-loader>
+      <loader />
       <mdb-modal-header>
         <mdb-modal-title>Upload image</mdb-modal-title>
       </mdb-modal-header>
@@ -255,35 +257,41 @@
                   aria-describedby="imageInput"
                   accept="image/jpeg image/png"
                   @change="checkFile($event)"
-                />
+                >
                 <label
                   v-if="file.name"
                   class="custom-file-label"
                   for="inputGroupFile01"
-                  >{{ file.name }}</label
-                >
-                <label v-else class="custom-file-label" for="inputGroupFile01"
-                  >Image</label
-                >
+                >{{ file.name }}</label>
+                <label
+                  v-else
+                  class="custom-file-label"
+                  for="inputGroupFile01"
+                >Image</label>
               </div>
             </div>
           </div>
         </div>
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" size="sm" @click.native="closeImageUpload"
-          >Close</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="sm"
+          @click.native="closeImageUpload"
         >
+          Close
+        </mdb-btn>
         <mdb-btn
           color="primary"
           size="sm"
           :disabled="img.alt == ''"
           @click="saveFile(type)"
-          >Save</mdb-btn
         >
+          Save
+        </mdb-btn>
       </mdb-modal-footer>
       <transition name="fade">
-        <app-message :msg="uploadMsg"></app-message>
+        <ui-message :msg="uploadMsg" />
       </transition>
     </mdb-modal>
   </div>
@@ -340,6 +348,10 @@ export default {
   data() {
     return {
       post: {
+        img: {
+          url: '',
+          alt: ''
+        },
         title: '',
         excerpt: '',
         type: '',
@@ -347,10 +359,8 @@ export default {
         date: '',
         content: '',
         year: '',
-        imgId: '',
-        url: '',
-        alt: '',
         tags: '',
+        published: ''
       },
       pageNumber: 0,
       msg: '',
@@ -370,7 +380,11 @@ export default {
         date: '',
         content: '',
         year: '',
-        alt: '',
+        img: {
+          url: '',
+          alt: ''
+        },
+        published: ''
       },
       existsModal: false,
       uploadImage: false,
@@ -395,6 +409,9 @@ export default {
     updatedImage() {
       return this.$store.getters['images/getImage']
     },
+     images() {
+      return this.$store.getters['images/getImages']
+    },
     pageCount() {
       const l = this.posts.length
       const s = this.size
@@ -409,6 +426,10 @@ export default {
   methods: {
     reset() {
       this.post = {
+        img: {
+          url: '',
+          alt: ''
+        },
         title: '',
         excerpt: '',
         type: '',
@@ -417,9 +438,8 @@ export default {
         content: '',
         year: '',
         imgId: '',
-        url: '',
-        alt: '',
         tags: '',
+        published: ''
       }
       this.file = ''
       this.img = {
@@ -443,12 +463,9 @@ export default {
 
       this.post.slug = newSlug.join('-') + '-' + date
 
-      if (this.post.url === '') {
-        this.post.url = this.defaultImage
+      if (this.post.img.url === '') {
+        this.post.img.url = this.defaultImage
       }
-      console.log(this.post)
-      console.log(this.quoteContent)
-      console.log(this.galleryContent)
       featuredCollection
         .add({
           title: this.post.title,
@@ -459,10 +476,10 @@ export default {
           content: this.post.content,
           year: this.post.year,
           createdOn: new Date(),
-          imgId: this.post.imgId,
-          url: this.post.url,
-          alt: this.post.alt,
+          url: this.post.img.url,
+          alt: this.post.img.alt,
           tags: this.post.tags,
+          published: this.post.published
         })
         .then(() => {
           this.reset()
@@ -657,13 +674,17 @@ export default {
       this.clickedPost.date = post.date
       this.clickedPost.content = post.content
       this.clickedPost.year = post.year
-      this.clickedPost.url = post.url
-      this.clickedPost.imgId = post.imgId
-      this.clickedPost.alt = post.alt
+      this.clickedPost.img.url = post.url
+      this.clickedPost.img.alt = post.alt
       this.clickedPost.tags = post.tags
+      this.clikedPost.published = post.published
     },
     cancelEdit() {
       this.clickedPost = {
+        img: {
+          url: '',
+          alt: ''
+        },
         id: '',
         title: '',
         excerpt: '',
@@ -672,10 +693,8 @@ export default {
         date: '',
         content: '',
         year: '',
-        url: '',
-        imgId: '',
-        alt: '',
         tags: '',
+        published: ''
       }
       this.editModal = false
     },
@@ -705,10 +724,10 @@ export default {
           content: this.clickedPost.content,
           year: this.clickedPost.year,
           createdOn: new Date(),
-          imgId: this.clickedPost.imgId,
-          url: this.clickedPost.url,
-          alt: this.clickedPost.alt,
+          url: this.clickedPost.img.url,
+          alt: this.clickedPost.img.alt,
           tags: this.clickedPost.tags,
+          published: this.clickedPost.published
         })
         .then(() => {
           this.cancelEdit()

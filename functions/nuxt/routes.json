@@ -2,96 +2,108 @@
   {
     "name": "admin",
     "path": "/admin",
-    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin.vue",
+    "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin.vue",
     "chunkName": "pages/admin",
     "children": [
       {
         "name": "admin-championships",
         "path": "championships",
-        "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/championships.vue",
-        "chunkName": "pages/admin/championships",
-        "_name": "_e1ce19f2"
+        "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/championships.vue",
+        "chunkName": "pages/admin/championships"
       },
       {
         "name": "admin-drivers",
         "path": "drivers",
-        "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/drivers.vue",
-        "chunkName": "pages/admin/drivers",
-        "_name": "_5cdcdba4"
+        "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/drivers.vue",
+        "chunkName": "pages/admin/drivers"
       },
       {
         "name": "admin-headline",
         "path": "headline",
-        "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/headline.vue",
-        "chunkName": "pages/admin/headline",
-        "_name": "_9789f56a"
+        "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/headline.vue",
+        "chunkName": "pages/admin/headline"
+      },
+      {
+        "path": "media",
+        "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/media.vue",
+        "chunkName": "pages/admin/media",
+        "children": [
+          {
+            "name": "admin-media",
+            "path": "",
+            "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/media/index.vue",
+            "chunkName": "pages/admin/media/index"
+          },
+          {
+            "name": "admin-media-videos",
+            "path": "videos",
+            "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/media/videos.vue",
+            "chunkName": "pages/admin/media/videos"
+          }
+        ]
       },
       {
         "name": "admin-posts",
         "path": "posts",
-        "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/posts.vue",
+        "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/posts.vue",
         "chunkName": "pages/admin/posts",
         "children": [
           {
             "name": "admin-posts-featured",
             "path": "featured",
-            "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/posts/featured.vue",
-            "chunkName": "pages/admin/posts/featured",
-            "_name": "_2d60ffbe"
+            "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/posts/featured.vue",
+            "chunkName": "pages/admin/posts/featured"
           },
           {
             "name": "admin-posts-news",
             "path": "news",
-            "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/posts/news.vue",
-            "chunkName": "pages/admin/posts/news",
-            "_name": "_5d2cb1c6"
+            "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/posts/news.vue",
+            "chunkName": "pages/admin/posts/news"
           }
-        ],
-        "_name": "_57e1c26c"
+        ]
+      },
+      {
+        "name": "admin-tags",
+        "path": "tags",
+        "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/admin/tags.vue",
+        "chunkName": "pages/admin/tags"
       }
-    ],
-    "_name": "_8ecf0130"
+    ]
   },
   {
     "name": "login",
     "path": "/login",
-    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/login.vue",
-    "chunkName": "pages/login",
-    "_name": "_50d0ce82"
+    "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/login.vue",
+    "chunkName": "pages/login"
   },
   {
     "name": "news",
     "path": "/news",
-    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/news.vue",
-    "chunkName": "pages/news",
-    "_name": "_6980eeca"
+    "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/news.vue",
+    "chunkName": "pages/news"
   },
   {
     "name": "championship-slug",
     "path": "/championship/:slug?",
-    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/championship/_slug.vue",
-    "chunkName": "pages/championship/_slug",
-    "_name": "_15307e57"
+    "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/championship/_slug.vue",
+    "chunkName": "pages/championship/_slug"
   },
   {
     "name": "feature-slug",
     "path": "/feature/:slug?",
-    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/feature/_slug.vue",
-    "chunkName": "pages/feature/_slug",
-    "_name": "_19a1056c"
+    "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/feature/_slug.vue",
+    "chunkName": "pages/feature/_slug"
   },
   {
     "name": "post-slug",
     "path": "/post/:slug?",
-    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/post/_slug.vue",
-    "chunkName": "pages/post/_slug",
-    "_name": "_a161f3dc"
+    "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/post/_slug.vue",
+    "chunkName": "pages/post/_slug"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/harry/Desktop/My_Documents/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_f1ada92a"
+    "component": "/Volumes/Extreme SSD/Websites/TPR Offical/tpr_nuxt/tpr_nuxt/pages/index.vue",
+    "chunkName": "pages/index"
   }
 ]

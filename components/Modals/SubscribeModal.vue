@@ -9,17 +9,17 @@
       @close="close()"
     >
       <mdb-modal-header
-        class="bg-secondary text-white"
+        class="bg-white text-primary"
         :class="{ 'd-none': subscribed }"
       >
         <mdb-modal-title>Subscribe for the latest</mdb-modal-title>
       </mdb-modal-header>
       <mdb-modal-header
-        class="bg-white text-dark"
+        class="bg-white text-primary"
         :class="{ 'd-none': !subscribed }"
       >
-        <mdb-modal-title
-          >Subscribed <mdb-icon icon="check" class="green-text" />
+        <mdb-modal-title>
+          Subscribed <mdb-icon icon="check" class="green-text" />
         </mdb-modal-title>
       </mdb-modal-header>
       <form
@@ -32,13 +32,12 @@
         :class="{ 'd-none': subscribed }"
         novalidate
       >
-        <mdb-modal-body>
+        <mdb-modal-body class="bg-secondary">
           <div class="grey-text">
             <mdb-input
               id="mce-FNAME"
               v-model="firstName"
               label="First name"
-              icon="user"
               type="text"
               name="FNAME"
             />
@@ -46,7 +45,6 @@
               id="mce-LNAME"
               v-model="lastName"
               label="Last name"
-              icon="user"
               type="text"
               name="LNAME"
             />
@@ -54,24 +52,23 @@
               id="mce-EMAIL"
               v-model="email"
               label="Email"
-              icon="envelope"
               type="email"
               name="EMAIL"
             />
           </div>
         </mdb-modal-body>
-        <mdb-modal-footer class="bg-secondary">
+        <mdb-modal-footer class="bg-white">
           <mdb-btn
             id="mc-embedded-subscribe"
             far
             icon="paper-plane"
-            outline="white"
+            outline="primary"
             type="submit"
             :disabled="firstName == '' || lastName == '' || email == ''"
             @click="subscribe()"
           >
-            Subscribe</mdb-btn
-          >
+            Subscribe
+          </mdb-btn>
         </mdb-modal-footer>
       </form>
     </mdb-modal>

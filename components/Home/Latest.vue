@@ -1,13 +1,15 @@
 <template>
   <mdb-container fluid class="bg-primary">
-    <mdb-row class="pt-5">
+    <mdb-row class="pt-5 d-flex flex-center">
       <mdb-col
         v-for="(post, index) in posts"
         :key="index"
-        class="mt-5 py-5"
-        md="4"
+        class="py-5"
+        col="12"
+        md="6"
+        xl="4"
       >
-        <UICard :post="post"> </UICard>
+        <ui-card :post="post" />
       </mdb-col>
     </mdb-row>
   </mdb-container>

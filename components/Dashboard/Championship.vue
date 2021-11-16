@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 class="text-center w-100">Championships</h1>
+    <h1 class="text-center w-100">
+      Championships
+    </h1>
 
     <!-- Headline images  -->
     <mdb-container>
@@ -11,14 +13,14 @@
             :src="post.url"
             :alt="post.alt"
             class="img-fluid"
-          />
+          >
 
           <img
             v-else
             :src="defaultImage"
             alt="Placeholder image"
             class="img-fluid"
-          />
+          >
         </mdb-col>
         <mdb-col class="text-center pt-2" col="4">
           <img
@@ -26,14 +28,14 @@
             :src="post.logoUrl"
             :alt="post.logoAlt"
             class="img-fluid"
-          />
+          >
 
           <img
             v-else
             :src="defaultImage"
             alt="Placeholder image"
             class="img-fluid"
-          />
+          >
         </mdb-col>
       </mdb-row>
     </mdb-container>
@@ -51,8 +53,9 @@
                   class="ml-3"
                   inline
                   @click.native="newImage('headline')"
-                  >Headline Image</mdb-btn
                 >
+                  Headline Image
+                </mdb-btn>
               </div>
 
               <div class="md-form col-4 p-0">
@@ -61,8 +64,9 @@
                   class="ml-3"
                   inline
                   @click.native="newImage('logo')"
-                  >Logo</mdb-btn
                 >
+                  Logo
+                </mdb-btn>
               </div>
             </div>
 
@@ -78,7 +82,7 @@
               />
             </div>
             <mdb-col col="12">
-              <app-editor :content.sync="post.content"></app-editor>
+              <ui-editor :content.sync="post.content" />
             </mdb-col>
           </mdb-col>
         </mdb-row>
@@ -88,7 +92,9 @@
       <mdb-container fluid class="p-0">
         <mdb-row>
           <mdb-col col="10" class="my-5 offset-1">
-            <h2 class="text-center">Timetable</h2>
+            <h2 class="text-center">
+              Timetable
+            </h2>
             <mdb-input
               v-model.trim="post.timetable"
               label="Title and year"
@@ -96,26 +102,29 @@
             />
           </mdb-col>
           <mdb-col col="4" class="p-5">
-            <p class="h4 text-center mb-4">Fixture</p>
+            <p class="h4 text-center mb-4">
+              Fixture
+            </p>
             <img
               v-if="post.timetableImg"
               :src="post.timetableImg"
               :alt="post.timetableAlt"
               class="img-fluid"
-            />
+            >
             <img
               v-else
               :src="defaultImage"
               alt="Placeholder image"
               class="img-fluid"
-            />
+            >
             <mdb-btn
               color="primary"
               class="ml-3"
               inline
               @click.native="newImage('timetable')"
-              >Image</mdb-btn
             >
+              Image
+            </mdb-btn>
             <div class="grey-text">
               <mdb-input
                 v-model="fixture.dateFrom"
@@ -130,27 +139,38 @@
                 color="primary"
                 :disabled="
                   fixture.dateFrom == '' ||
-                  fixture.dateTo == '' ||
-                  fixture.track == ''
+                    fixture.dateTo == '' ||
+                    fixture.track == ''
                 "
                 @click="addFixture('new')"
-                >Add Fixture</mdb-btn
               >
+                Add Fixture
+              </mdb-btn>
             </div>
           </mdb-col>
           <mdb-col col="8" class="p-5">
             <table class="table">
               <thead class="black text-white">
                 <tr>
-                  <th scope="col">Track</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">
+                    Track
+                  </th>
+                  <th scope="col">
+                    Date
+                  </th>
+                  <th scope="col">
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(fixture, index) in post.fixtures" :key="index">
-                  <th scope="row">{{ fixture.track }}</th>
-                  <th scope="row">{{ fixture.dateFrom }}</th>
+                  <th scope="row">
+                    {{ fixture.track }}
+                  </th>
+                  <th scope="row">
+                    {{ fixture.dateFrom }}
+                  </th>
                   <td>
                     <button
                       class="btn btn-danger btn-sm"
@@ -167,21 +187,29 @@
       </mdb-container>
 
       <mdb-col col="12" class="py-3">
-        <tags :tags.sync="post.tags"></tags>
+        <ui-tags :tags.sync="post.tags" />
       </mdb-col>
 
       <!-- Gallery  -->
       <mdb-container>
         <mdb-row class="text-center">
           <mdb-col col="12">
-            <h3 class="py-3">Gallery content</h3>
+            <h3 class="py-3">
+              Gallery content
+            </h3>
             <div class="d-flex flex-row justify-content-center">
-              <mdb-btn color="primary" @click.native="newImage('gallery')"
-                >New image</mdb-btn
+              <mdb-btn
+                color="primary"
+                @click.native="newImage('gallery')"
               >
-              <mdb-btn color="primary" @click.native="selectImage('gallery')"
-                >Select image</mdb-btn
+                New image
+              </mdb-btn>
+              <mdb-btn
+                color="primary"
+                @click.native="selectImage('gallery')"
               >
+                Select image
+              </mdb-btn>
             </div>
             <mdb-row>
               <mdb-col
@@ -189,7 +217,7 @@
                 :key="index"
                 class="col-6 col-md-4"
               >
-                <img :src="img.url" :alt="img.alt" class="img-fluid" />
+                <img :src="img.url" :alt="img.alt" class="img-fluid">
                 <button
                   class="btn btn-danger btn-sm"
                   @click="removeItem(index, galleryContent)"
@@ -201,17 +229,22 @@
           </mdb-col>
 
           <mdb-col col="12" class="py-3">
-            <h3 class="py-3">Drivers</h3>
-            <mdb-btn color="primary" @click.native="addDriver('new')"
-              >Select Drivers</mdb-btn
+            <h3 class="py-3">
+              Drivers
+            </h3>
+            <mdb-btn
+              color="primary"
+              @click.native="addDriver('new')"
             >
+              Select Drivers
+            </mdb-btn>
             <mdb-row>
               <mdb-col
                 v-for="(driver, index) in championshipDrivers"
                 :key="index"
                 class="col-6 col-md-4"
               >
-                <img :src="driver.url" :alt="driver.alt" class="img-fluid" />
+                <img :src="driver.url" :alt="driver.alt" class="img-fluid">
                 <h2>{{ driver.name }}</h2>
                 <button
                   class="btn btn-danger btn-sm"
@@ -227,15 +260,19 @@
 
       <!-- submit button -->
       <div class="w-100 text-right p-5 pb-0">
-        <mdb-btn color="secondary" size="lg" type="submit"
-          >Add Chamiopnship</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="lg"
+          type="submit"
         >
+          Add Chamiopnship
+        </mdb-btn>
       </div>
     </form>
 
     <!-- Message -->
     <transition name="fade">
-      <app-message :msg="msg"></app-message>
+      <ui-message :msg="msg" />
     </transition>
 
     <!-- all posts  -->
@@ -245,13 +282,19 @@
           <table class="table">
             <thead class="black text-white">
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Action</th>
+                <th scope="col">
+                  Name
+                </th>
+                <th scope="col">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(post, index) in paginatedData" :key="index">
-                <th scope="row">{{ post.name }}</th>
+                <th scope="row">
+                  {{ post.name }}
+                </th>
                 <td>
                   <a class="mr-1" @click="editPost(post)">
                     <mdb-icon icon="edit" />
@@ -305,14 +348,14 @@
                 :src="clickedPost.url"
                 :alt="clickedPost.alt"
                 class="img-fluid"
-              />
+              >
             </mdb-col>
             <mdb-col class="text-center pt-2" col="4">
               <img
                 :src="clickedPost.logoUrl"
                 :alt="clickedPost.logoAlt"
                 class="img-fluid"
-              />
+              >
             </mdb-col>
           </mdb-row>
         </mdb-container>
@@ -329,8 +372,9 @@
                       class="ml-3"
                       inline
                       @click.native="newImage('editHeadline')"
-                      >Change Headline Image</mdb-btn
                     >
+                      Change Headline Image
+                    </mdb-btn>
                   </div>
 
                   <div class="md-form col-4 p-0">
@@ -339,8 +383,9 @@
                       class="ml-3"
                       inline
                       @click.native="newImage('editLogo')"
-                      >Change Logo</mdb-btn
                     >
+                      Change Logo
+                    </mdb-btn>
                   </div>
                 </div>
 
@@ -360,7 +405,7 @@
                   />
                 </div>
                 <mdb-col col="12">
-                  <app-editor :content.sync="clickedPost.content"></app-editor>
+                  <ui-editor :content.sync="clickedPost.content" />
                 </mdb-col>
               </mdb-col>
             </mdb-row>
@@ -370,7 +415,9 @@
           <mdb-container fluid class="p-0">
             <mdb-row>
               <mdb-col col="10" class="my-5 offset-1">
-                <h2 class="text-center">Timetable</h2>
+                <h2 class="text-center">
+                  Timetable
+                </h2>
                 <mdb-input
                   v-model.trim="clickedPost.timetable"
                   label="Title and year"
@@ -378,26 +425,29 @@
                 />
               </mdb-col>
               <mdb-col col="4" class="p-5">
-                <p class="h4 text-center mb-4">Fixture</p>
+                <p class="h4 text-center mb-4">
+                  Fixture
+                </p>
                 <img
                   v-if="clickedPost.timetableImg"
                   :src="clickedPost.timetableImg"
                   :alt="clickedPost.timetableAlt"
                   class="img-fluid"
-                />
+                >
                 <img
                   v-else
                   :src="defaultImage"
                   alt="Placeholder image"
                   class="img-fluid"
-                />
+                >
                 <mdb-btn
                   color="primary"
                   class="ml-3"
                   inline
                   @click.native="newImage('editTimetable')"
-                  >Image</mdb-btn
                 >
+                  Image
+                </mdb-btn>
                 <div class="grey-text">
                   <mdb-input
                     v-model="fixture.dateFrom"
@@ -420,21 +470,28 @@
                     color="primary"
                     :disabled="
                       fixture.dateFrom == '' ||
-                      fixture.dateTo == '' ||
-                      fixture.track == ''
+                        fixture.dateTo == '' ||
+                        fixture.track == ''
                     "
                     @click="addFixture('edit')"
-                    >Add Fixture</mdb-btn
                   >
+                    Add Fixture
+                  </mdb-btn>
                 </div>
               </mdb-col>
               <mdb-col col="8" class="p-5">
                 <table class="table">
                   <thead class="black text-white">
                     <tr>
-                      <th scope="col">Track</th>
-                      <th scope="col">Date</th>
-                      <th scope="col">Action</th>
+                      <th scope="col">
+                        Track
+                      </th>
+                      <th scope="col">
+                        Date
+                      </th>
+                      <th scope="col">
+                        Action
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -442,8 +499,12 @@
                       v-for="(fixture, index) in clicked.fixtures"
                       :key="index"
                     >
-                      <th scope="row">{{ fixture.track }}</th>
-                      <th scope="row">{{ fixture.dateFrom }}</th>
+                      <th scope="row">
+                        {{ fixture.track }}
+                      </th>
+                      <th scope="row">
+                        {{ fixture.dateFrom }}
+                      </th>
                       <td>
                         <button
                           class="btn btn-danger btn-sm"
@@ -460,23 +521,29 @@
           </mdb-container>
 
           <mdb-col col="12" class="py-3">
-            <tags :tags.sync="clickedPost.tags"></tags>
+            <ui-tags :tags.sync="clickedPost.tags" />
           </mdb-col>
 
           <!-- Gallery  -->
           <mdb-container>
             <mdb-row class="text-center">
               <mdb-col col="12">
-                <h3 class="py-3">Gallery content</h3>
+                <h3 class="py-3">
+                  Gallery content
+                </h3>
                 <div class="d-flex flex-row justify-content-center">
                   <mdb-btn
                     color="primary"
                     @click.native="newImage('editGallery')"
-                    >New image</mdb-btn
                   >
-                  <mdb-btn color="primary" @click.native="selectImage('edit')"
-                    >Select image</mdb-btn
+                    New image
+                  </mdb-btn>
+                  <mdb-btn
+                    color="primary"
+                    @click.native="selectImage('edit')"
                   >
+                    Select image
+                  </mdb-btn>
                 </div>
                 <mdb-row>
                   <mdb-col
@@ -484,7 +551,7 @@
                     :key="index"
                     class="col-6 col-md-4"
                   >
-                    <img :src="img.url" :alt="img.alt" class="img-fluid" />
+                    <img :src="img.url" :alt="img.alt" class="img-fluid">
                     <button
                       class="btn btn-danger btn-sm"
                       @click="removeItem(index, clicked.galleryContent)"
@@ -496,10 +563,15 @@
               </mdb-col>
 
               <mdb-col col="12" class="py-3">
-                <h3 class="py-3">Drivers</h3>
-                <mdb-btn color="primary" @click.native="addDriver('edit')"
-                  >Select Drivers</mdb-btn
+                <h3 class="py-3">
+                  Drivers
+                </h3>
+                <mdb-btn
+                  color="primary"
+                  @click.native="addDriver('edit')"
                 >
+                  Select Drivers
+                </mdb-btn>
                 <mdb-row>
                   <mdb-col
                     v-for="(driver, index) in clicked.drivers"
@@ -510,7 +582,7 @@
                       :src="driver.url"
                       :alt="driver.alt"
                       class="img-fluid"
-                    />
+                    >
                     <h2>{{ driver.name }}</h2>
                     <button
                       class="btn btn-danger btn-sm"
@@ -527,12 +599,16 @@
       </mdb-modal-body>
       <mdb-container>
         <transition name="fade">
-          <app-message :msg="editMsg"></app-message>
+          <ui-message :msg="editMsg" />
         </transition>
       </mdb-container>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" @click.native="cancelEdit">Close</mdb-btn>
-        <mdb-btn color="primary" @click.native="saveEdit">Save changes</mdb-btn>
+        <mdb-btn color="secondary" @click.native="cancelEdit">
+          Close
+        </mdb-btn>
+        <mdb-btn color="primary" @click.native="saveEdit">
+          Save changes
+        </mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
@@ -545,12 +621,16 @@
       @close="deleteModal = false"
     >
       <mdb-modal-body class="text-center">
-        <span class="text-danger"
-          >Are you sure you want to delete this post</span
-        >
+        <span
+          class="text-danger"
+        >Are you sure you want to delete this post</span>
         {{ toDeletePost.name }}
-        <mdb-btn color="secondary" @click.native="cancelDelete">Close</mdb-btn>
-        <mdb-btn color="danger" @click.native="confirmDelete">Delete</mdb-btn>
+        <mdb-btn color="secondary" @click.native="cancelDelete">
+          Close
+        </mdb-btn>
+        <mdb-btn color="danger" @click.native="confirmDelete">
+          Delete
+        </mdb-btn>
       </mdb-modal-body>
     </mdb-modal>
 
@@ -563,21 +643,29 @@
         <div class="row col-12 col-md-6 col-lg-4 py-3">
           <p>Would you like to use this one ?</p>
         </div>
-        <img :src="img.content.url" :alt="img.content.alt" class="img-fluid" />
+        <img :src="img.content.url" :alt="img.content.alt" class="img-fluid">
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" size="sm" @click.native="declineUse"
-          >No</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="sm"
+          @click.native="declineUse"
         >
-        <mdb-btn color="primary" size="sm" @click.native="confirmUse"
-          >Yes</mdb-btn
+          No
+        </mdb-btn>
+        <mdb-btn
+          color="primary"
+          size="sm"
+          @click.native="confirmUse"
         >
+          Yes
+        </mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
     <!-- uploadImage -->
     <mdb-modal size="md" :show="uploadImage" @close="closeImageUpload">
-      <app-loader></app-loader>
+      <ui-loader />
       <mdb-modal-header>
         <mdb-modal-title>Upload image</mdb-modal-title>
       </mdb-modal-header>
@@ -602,35 +690,41 @@
                   aria-describedby="imageInput"
                   accept="image/jpeg image/png"
                   @change="checkFile($event)"
-                />
+                >
                 <label
                   v-if="file.name"
                   class="custom-file-label"
                   for="inputGroupFile01"
-                  >{{ file.name }}</label
-                >
-                <label v-else class="custom-file-label" for="inputGroupFile01"
-                  >Image</label
-                >
+                >{{ file.name }}</label>
+                <label
+                  v-else
+                  class="custom-file-label"
+                  for="inputGroupFile01"
+                >Image</label>
               </div>
             </div>
           </div>
         </div>
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" size="sm" @click.native="closeImageUpload"
-          >Close</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="sm"
+          @click.native="closeImageUpload"
         >
+          Close
+        </mdb-btn>
         <mdb-btn
           color="primary"
           size="sm"
           :disabled="img.alt == ''"
           @click="saveFile(type)"
-          >Save</mdb-btn
         >
+          Save
+        </mdb-btn>
       </mdb-modal-footer>
       <transition name="fade">
-        <app-message :msg="uploadMsg"></app-message>
+        <ui-message :msg="uploadMsg" />
       </transition>
     </mdb-modal>
 
@@ -652,20 +746,26 @@
             class="custom-control-input"
             name="drivers"
             @click="selectedDriver(driver)"
-          />
+          >
           <label class="custom-control-label" :for="driver.id">{{
             driver.name
           }}</label>
         </div>
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" size="sm" @click.native="closeDriverModel"
-          >Close</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="sm"
+          @click.native="closeDriverModel"
         >
-        <mdb-btn color="primary" size="sm" @click="saveDriver">Save</mdb-btn>
+          Close
+        </mdb-btn>
+        <mdb-btn color="primary" size="sm" @click="saveDriver">
+          Save
+        </mdb-btn>
       </mdb-modal-footer>
       <transition name="fade">
-        <app-message :msg="uploadMsg"></app-message>
+        <ui-message :msg="uploadMsg" />
       </transition>
     </mdb-modal>
 
@@ -686,13 +786,13 @@
           <div class="row">
             <div v-for="(img, index) in images" :key="index" class="col-4 p-0">
               <div class="custom-control custom-checkbox custom-control-inline">
-                <img :src="img.url" :alt="img.alt" class="img-fluid" />
+                <img :src="img.url" :alt="img.alt" class="img-fluid">
                 <input
                   :id="img.id"
                   type="checkbox"
                   class="custom-control-input"
                   @click="selected(img)"
-                />
+                >
                 <label class="custom-control-label" :for="img.id">
                   {{ img.alt }}
                 </label>
@@ -702,10 +802,15 @@
         </div>
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" @click.native="selectModel = false"
-          >Close</mdb-btn
+        <mdb-btn
+          color="secondary"
+          @click.native="selectModel = false"
         >
-        <mdb-btn color="primary" @click.native="saveSelection">Confirm</mdb-btn>
+          Close
+        </mdb-btn>
+        <mdb-btn color="primary" @click.native="saveSelection">
+          Confirm
+        </mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
   </div>
@@ -713,7 +818,6 @@
 
 <script>
 import moment from 'moment'
-import { championshipCollection, imageCollection } from '@/services/firebase'
 import {
   mdbInput,
   mdbBtn,
@@ -727,6 +831,7 @@ import {
   mdbModalFooter,
   mdbModal,
 } from 'mdbvue'
+import { championshipCollection, imageCollection } from '@/services/firebase'
 
 export default {
   name: 'PostsDashboard',
@@ -842,7 +947,7 @@ export default {
       },
       type: '',
       defaultImage:
-        'https://firebasestorage.googleapis.com/v0/b/jhr-developments-c5bba.appspot.com/o/images%2Fimg-placeholder.png?alt=media&token=7d9c5978-d45d-4049-91d9-ceb235823db7',
+        'https://firebasestorage.googleapis.com/v0/b/jhr-developments-c5bba.ui-appspot.com/o/images%2Fimg-placeholder.png?alt=media&token=7d9c5978-d45d-4049-91d9-ceb235823db7',
     }
   },
   computed: {

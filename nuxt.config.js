@@ -53,6 +53,21 @@ module.exports = {
         type: 'text/javascript',
         charset: 'utf-8',
       },
+      {
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-P0W1M0FBQ3',
+        async: true,
+      },
+      {
+        hid: 'gtag',
+        type: 'text/javascript',
+        charset: 'utf-8',
+        innerHTML: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-P0W1M0FBQ3')
+        `,
+      },
     ],
   },
 
@@ -70,31 +85,21 @@ module.exports = {
     middleware: ['auth'],
   },
 
-  // vue: {
-  //   config: {
-  //     productionTip: false,
-  //     devtools: true,
-  //   },
-  // },
+  render: {
+    bundleRenderer: {
+      runInNewContext: false,
+    },
+  },
+
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true,
+    },
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: {
-    dirs: [
-      '~/components',
-      {
-        path: '~/components/Navigation/',
-        prefix: 'Navigation',
-      },
-      {
-        path: '~/components/Modals/',
-        prefix: 'Modals',
-      },
-      {
-        path: '~/components/Home/',
-        prefix: 'Home',
-      },
-    ],
-  },
+  components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -118,6 +123,6 @@ module.exports = {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extend(config, ctx) {},
-    transpile: ['mdbvue', 'ckeditor', 'hooper'],
+    transpile: ['mdbvue'],
   },
 }

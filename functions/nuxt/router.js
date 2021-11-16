@@ -4,19 +4,23 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _8ecf0130 = () => interopDefault(import('../pages/admin.vue' /* webpackChunkName: "pages/admin" */))
-const _e1ce19f2 = () => interopDefault(import('../pages/admin/championships.vue' /* webpackChunkName: "pages/admin/championships" */))
-const _5cdcdba4 = () => interopDefault(import('../pages/admin/drivers.vue' /* webpackChunkName: "pages/admin/drivers" */))
-const _9789f56a = () => interopDefault(import('../pages/admin/headline.vue' /* webpackChunkName: "pages/admin/headline" */))
-const _57e1c26c = () => interopDefault(import('../pages/admin/posts.vue' /* webpackChunkName: "pages/admin/posts" */))
-const _2d60ffbe = () => interopDefault(import('../pages/admin/posts/featured.vue' /* webpackChunkName: "pages/admin/posts/featured" */))
-const _5d2cb1c6 = () => interopDefault(import('../pages/admin/posts/news.vue' /* webpackChunkName: "pages/admin/posts/news" */))
-const _50d0ce82 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
-const _6980eeca = () => interopDefault(import('../pages/news.vue' /* webpackChunkName: "pages/news" */))
-const _15307e57 = () => interopDefault(import('../pages/championship/_slug.vue' /* webpackChunkName: "pages/championship/_slug" */))
-const _19a1056c = () => interopDefault(import('../pages/feature/_slug.vue' /* webpackChunkName: "pages/feature/_slug" */))
-const _a161f3dc = () => interopDefault(import('../pages/post/_slug.vue' /* webpackChunkName: "pages/post/_slug" */))
-const _f1ada92a = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _2cd6d4ae = () => interopDefault(import('../pages/admin.vue' /* webpackChunkName: "pages/admin" */))
+const _2b1d95cd = () => interopDefault(import('../pages/admin/championships.vue' /* webpackChunkName: "pages/admin/championships" */))
+const _12a6ea2c = () => interopDefault(import('../pages/admin/drivers.vue' /* webpackChunkName: "pages/admin/drivers" */))
+const _54613ec5 = () => interopDefault(import('../pages/admin/headline.vue' /* webpackChunkName: "pages/admin/headline" */))
+const _15670ec3 = () => interopDefault(import('../pages/admin/media.vue' /* webpackChunkName: "pages/admin/media" */))
+const _22903706 = () => interopDefault(import('../pages/admin/media/index.vue' /* webpackChunkName: "pages/admin/media/index" */))
+const _b3a97e58 = () => interopDefault(import('../pages/admin/media/videos.vue' /* webpackChunkName: "pages/admin/media/videos" */))
+const _0e408b32 = () => interopDefault(import('../pages/admin/posts.vue' /* webpackChunkName: "pages/admin/posts" */))
+const _644193ca = () => interopDefault(import('../pages/admin/posts/featured.vue' /* webpackChunkName: "pages/admin/posts/featured" */))
+const _e6ab1680 = () => interopDefault(import('../pages/admin/posts/news.vue' /* webpackChunkName: "pages/admin/posts/news" */))
+const _01934f0a = () => interopDefault(import('../pages/admin/tags.vue' /* webpackChunkName: "pages/admin/tags" */))
+const _75e1b870 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
+const _2dc04e78 = () => interopDefault(import('../pages/news.vue' /* webpackChunkName: "pages/news" */))
+const _5c496ad1 = () => interopDefault(import('../pages/championship/_slug.vue' /* webpackChunkName: "pages/championship/_slug" */))
+const _e601a6e0 = () => interopDefault(import('../pages/feature/_slug.vue' /* webpackChunkName: "pages/feature/_slug" */))
+const _959de6e8 = () => interopDefault(import('../pages/post/_slug.vue' /* webpackChunkName: "pages/post/_slug" */))
+const _0930fe9e = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -31,57 +35,73 @@ export const routerOptions = {
 
   routes: [{
     path: "/admin",
-    component: _8ecf0130,
+    component: _2cd6d4ae,
     name: "admin",
     children: [{
       path: "championships",
-      component: _e1ce19f2,
+      component: _2b1d95cd,
       name: "admin-championships"
     }, {
       path: "drivers",
-      component: _5cdcdba4,
+      component: _12a6ea2c,
       name: "admin-drivers"
     }, {
       path: "headline",
-      component: _9789f56a,
+      component: _54613ec5,
       name: "admin-headline"
     }, {
+      path: "media",
+      component: _15670ec3,
+      children: [{
+        path: "",
+        component: _22903706,
+        name: "admin-media"
+      }, {
+        path: "videos",
+        component: _b3a97e58,
+        name: "admin-media-videos"
+      }]
+    }, {
       path: "posts",
-      component: _57e1c26c,
+      component: _0e408b32,
       name: "admin-posts",
       children: [{
         path: "featured",
-        component: _2d60ffbe,
+        component: _644193ca,
         name: "admin-posts-featured"
       }, {
         path: "news",
-        component: _5d2cb1c6,
+        component: _e6ab1680,
         name: "admin-posts-news"
       }]
+    }, {
+      path: "tags",
+      component: _01934f0a,
+      name: "admin-tags"
     }]
   }, {
     path: "/login",
-    component: _50d0ce82,
+    component: _75e1b870,
     name: "login"
   }, {
     path: "/news",
-    component: _6980eeca,
+    component: _2dc04e78,
     name: "news"
   }, {
     path: "/championship/:slug?",
-    component: _15307e57,
+    component: _5c496ad1,
     name: "championship-slug"
   }, {
     path: "/feature/:slug?",
-    component: _19a1056c,
+    component: _e601a6e0,
     name: "feature-slug"
   }, {
     path: "/post/:slug?",
-    component: _a161f3dc,
+    component: _959de6e8,
     name: "post-slug"
   }, {
     path: "/",
-    component: _f1ada92a,
+    component: _0930fe9e,
     name: "index"
   }],
 
@@ -89,7 +109,7 @@ export const routerOptions = {
 }
 
 export function createRouter (ssrContext, config) {
-  const base = (config.app && config.app.basePath) || routerOptions.base
+  const base = (config._app && config._app.basePath) || routerOptions.base
   const router = new Router({ ...routerOptions, base  })
 
   // TODO: remove in Nuxt 3

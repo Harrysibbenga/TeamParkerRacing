@@ -22,17 +22,17 @@
       <div class="d-flex justify-content-around">
         <div class="align-self-center">
           <span>
-            <mdb-icon icon="satellite-dish" class="red-text"/>
+            <mdb-icon icon="satellite-dish" class="red-text" />
           </span>
         </div>
         <div class="align-self-center text-center">
-            <span>{{ live | formatDate }}&nbsp;</span>
-            <p>
-                Live now for:
-                <span v-if="daysLive">{{ daysLive }} :</span>
-                <span v-if="hoursLive">{{ hoursLive | formatTime }} :</span>
-                <span>{{ minutesLive | formatTime }} :{{ secondsLive | formatTime }}</span>
-            </p>
+          <span>{{ live | formatDate }}&nbsp;</span>
+          <p>
+            Live now for:
+            <span v-if="daysLive">{{ daysLive }} :</span>
+            <span v-if="hoursLive">{{ hoursLive | formatTime }} :</span>
+            <span>{{ minutesLive | formatTime }} :{{ secondsLive | formatTime }}</span>
+          </p>
         </div>
       </div>
     </div>
@@ -40,13 +40,13 @@
       <div class="d-flex justify-content-around">
         <div class="align-self-center">
           <span>
-            <mdb-icon icon="satellite-dish"/>
+            <mdb-icon icon="satellite-dish" />
           </span>
         </div>
         <div class="align-self-center text-center">
-            <div class="align-self-center text-center">
-                <p>Stay tuned for the next event!</p>
-            </div>
+          <div class="align-self-center text-center">
+            <p>Stay tuned for the next event!</p>
+          </div>
         </div>
       </div>
     </div>
@@ -58,6 +58,24 @@ import moment from "moment";
 import {mdbIcon} from "mdbvue";
 
 export default {
+  filters: {
+    formatTime(value) {
+      if (value < 10) {
+        return "0" + value;
+      }
+      return value;
+    },
+    formatDate(val) {
+      if (!val) {
+        return "-";
+      }
+      const date = val;
+      return moment(date).format("Do MMM YYYY");
+    },
+  },
+  components: {
+    mdbIcon
+  },
   props: {
     deadline: {
       type: String,
@@ -95,14 +113,6 @@ export default {
       ],
     };
   },
-  mounted() {
-    setInterval(() => {
-      this.countdown();
-    }, 500);
-    setInterval(() => {
-      this.countdownLive();
-    }, 500);
-  },
   computed: {
     seconds() {
       return Math.floor((this.currentTime / 1000) % 60);
@@ -129,23 +139,13 @@ export default {
       return Math.floor(this.liveTime / (1000 * 60 * 60 * 24));
     },
   },
-  filters: {
-    formatTime(value) {
-      if (value < 10) {
-        return "0" + value;
-      }
-      return value;
-    },
-    formatDate(val) {
-      if (!val) {
-        return "-";
-      }
-      let date = val;
-      return moment(date).format("Do MMM YYYY");
-    },
-  },
-  components: {
-    mdbIcon
+  mounted() {
+    setInterval(() => {
+      this.countdown();
+    }, 500);
+    setInterval(() => {
+      this.countdownLive();
+    }, 500);
   },
   methods: {
     countdown() {

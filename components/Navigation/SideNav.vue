@@ -1,34 +1,39 @@
 <template>
   <div>
     <div id="mySidenav" class="sidenav d-flex flex-center flex-column">
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/news">News</NuxtLink>
+      <NuxtLink to="/" @click.native="toggle()">
+        Home
+      </NuxtLink>
+      <NuxtLink to="/news" @click.native="toggle()">
+        News
+      </NuxtLink>
       <NuxtLink v-if="currentUser" to="/admin" @click.native="reset()">
-        Admin</NuxtLink
-      >
+        Admin
+      </NuxtLink>
     </div>
-    <nav id="main-nav" class="shrink bg-white">
+    <nav id="mainNav">
       <div class="d-flex justify-content-between p-3 flex-center">
         <NavigationBurger
           :toggle="isPanelOpen"
           @click.native="toggle()"
-        ></NavigationBurger>
+        />
         <NuxtLink to="/" class="logo-back">
           <img
             :src="require('~/assets/TPR Logo.png')"
             class="logo"
             alt="Team Parker Racing Logo"
-          />
+          >
         </NuxtLink>
       </div>
     </nav>
     <div id="main">
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable nuxt/no-globals-in-created */
 export default {
   name: 'SideNav',
   data() {
@@ -53,6 +58,10 @@ export default {
     window.addEventListener('scroll', this.scroll)
     this.scroll()
   },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('scroll', this.scroll)
+  },
   methods: {
     toggle() {
       console.log(this.isPanelOpen)
@@ -69,8 +78,8 @@ export default {
     },
     openNav() {
       if (this.window.width <= 768) {
-        document.getElementById('mySidenav').style.width = '100%'
-        document.getElementById('main').style.marginLeft = '100%'
+        document.getElementById('mySidenav').style.width = '100vw'
+        document.getElementById('main').style.marginLeft = '100vw'
       } else {
         document.getElementById('mySidenav').style.width = '250px'
         document.getElementById('main').style.marginLeft = '250px'
@@ -87,7 +96,7 @@ export default {
       console.log(this.window.height)
     },
     scroll() {
-      const navbar = document.getElementById('main-nav')
+      const navbar = document.getElementById('mainNav')
       const navClasses = navbar.classList
       if (document.documentElement.scrollTop >= 100) {
         if (navClasses.contains('shrink') === false) {
@@ -103,20 +112,22 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-  height: 80px;
-  width: auto;
-  transition: height 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 50px;
+  width: 200px;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-#main-nav {
+
+#mainNav {
   position: relative;
   width: 100%;
   z-index: 999;
-  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-#main-nav.shrink {
+#mainNav.shrink {
   .logo {
-    height: 60px;
+    height: 40px;
+    width: 150px;
   }
 }
 
@@ -127,14 +138,14 @@ export default {
 }
 
 .sidenav {
-  height: 100%;
+  max-height:100vh;
   width: 0;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #144982;
-  overflow-x: hidden;
+  overflow: hidden;
   transition: 0.5s;
   padding-top: 60px;
 
@@ -170,5 +181,21 @@ export default {
   .sidenav a {
     font-size: 18px;
   }
+}
+
+@media (min-width: 768px) {
+  #mainNav {
+  position: absolute;
+}
+.logo {
+  height: 80px;
+  width: auto;
+  transition: height 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#mainNav.shrink {
+  .logo {
+    height: 60px;
+  }
+}
 }
 </style>

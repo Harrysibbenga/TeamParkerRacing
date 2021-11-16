@@ -19,28 +19,46 @@
 
       <mdb-tab pills justify color="primary" class="mt-4 mx-4">
         <mdb-tab-item>
-          <NuxtLink to="/admin/headline"> Headline </NuxtLink>
+          <NuxtLink to="/admin/headline">
+            Headline
+          </NuxtLink>
         </mdb-tab-item>
         <mdb-tab-item>
-          <NuxtLink to="/admin/posts"> Posts </NuxtLink>
+          <NuxtLink to="/admin/posts">
+            Posts
+          </NuxtLink>
         </mdb-tab-item>
         <mdb-tab-item>
-          <NuxtLink to="/admin/drivers"> Drivers </NuxtLink>
+          <NuxtLink to="/admin/drivers">
+            Drivers
+          </NuxtLink>
         </mdb-tab-item>
         <mdb-tab-item>
-          <NuxtLink to="/admin/championships"> Championships </NuxtLink>
+          <NuxtLink to="/admin/championships">
+            Championships
+          </NuxtLink>
+        </mdb-tab-item>
+        <mdb-tab-item>
+          <NuxtLink to="/admin/media">
+            Media
+          </NuxtLink>
+        </mdb-tab-item>
+        <mdb-tab-item>
+          <NuxtLink to="/admin/tags">
+            Tags
+          </NuxtLink>
         </mdb-tab-item>
       </mdb-tab>
     </mdb-container>
 
-    <NuxtChild class="pt-3"> </NuxtChild>
+    <NuxtChild class="pt-3" />
   </main>
 </template>
 
 <script>
 import { mdbContainer, mdbTab, mdbTabItem, mdbIcon } from 'mdbvue'
-import { auth } from '@/services/firebase'
 import Cookie from 'js-cookie'
+import { auth } from '@/services/firebase'
 
 export default {
   name: 'Admin',

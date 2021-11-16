@@ -13,7 +13,7 @@ import '../node_modules/bootstrap-css-only/css/bootstrap.min.css'
 
 import '../node_modules/mdbvue/build/scss/mdb.lite.scss'
 
-import '../assets/globalcss/style.css'
+import '../node_modules/hooper/dist/hooper.css'
 
 import _77068119 from '../layouts/admin.vue'
 import _6f6c098b from '../layouts/default.vue'

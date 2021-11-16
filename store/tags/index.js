@@ -20,9 +20,14 @@ export const actions = {
       const tagsArray = []
 
       querySnapshot.forEach((doc) => {
-        const post = doc.data()
-        post.id = doc.id
-        tagsArray.push(post)
+        const tag = doc.data()
+        tag.id = doc.id
+        if (!tag.active) {
+          tagsCollection.doc(tag.id).update({
+            active: false,
+          })
+        }
+        tagsArray.push(tag)
       })
       commit('setTags', tagsArray)
     })

@@ -3,11 +3,11 @@
     <transition name="fade">
       <div v-if="showing" class="loading">
         <div class="position-relative d-flex flex-center">
-          <breeding-rhombus-spinner
+          <!-- <breeding-rhombus-spinner
             :animation-duration="2000"
             :size="65"
             color="#ff1d5e"
-          />
+          /> -->
         </div>
       </div>
     </transition>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { BreedingRhombusSpinner } from "epic-spinners";
+// import { BreedingRhombusSpinner } from "epic-spinners";
 export default {
   data() {
     return {
@@ -25,6 +25,17 @@ export default {
   computed: {
     getLoading() {
       return this.$store.getters["global/getLoading"];
+    },
+  },
+  watch: {
+    getLoading(val) {
+      if (val) {
+        console.log("start fired");
+        this.start();
+      } else {
+        console.log("stop fired");
+        this.stop();
+      }
     },
   },
   methods: {
@@ -40,20 +51,9 @@ export default {
       }, 250);
     },
   },
-  watch: {
-    getLoading: function(val) {
-      if (val) {
-        console.log("start fired");
-        this.start();
-      } else {
-        console.log("stop fired");
-        this.stop();
-      }
-    },
-  },
-  components: {
-    BreedingRhombusSpinner,
-  },
+  // components: {
+  //   BreedingRhombusSpinner,
+  // },
 };
 </script>
 

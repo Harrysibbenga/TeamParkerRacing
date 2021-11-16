@@ -3,7 +3,7 @@
     <mdb-container fluid>
       <mdb-row>
         <mdb-col col="12" class="p-0 text-center">
-          <img :src="post.url" :alt="post.alt" class="img-fluid" />
+          <img :src="post.url" :alt="post.alt" class="img-fluid">
         </mdb-col>
         <mdb-col
           col="12"
@@ -21,7 +21,7 @@
           <h5 v-if="post.championship" class="championship pt-3">
             {{ post.championship }}
           </h5>
-          <div class="py-5" v-html="post.content"></div>
+          <div class="py-5" v-html="post.content" />
         </mdb-col>
       </mdb-row>
     </mdb-container>
@@ -40,9 +40,9 @@
               :key="index"
               :index="index"
             >
-              <img :src="img.url" :alt="img.alt" class="img-fluid" />
+              <img :src="img.url" :alt="img.alt" class="img-fluid">
             </Slide>
-            <Navigation slot="hooper-addons"></Navigation>
+            <Navigation slot="hooper-addons" />
           </Hooper>
         </mdb-col>
       </mdb-row>
@@ -63,22 +63,22 @@
     <mdb-container v-for="(quote, index) in post.quoteContent" :key="index">
       <mdb-row v-if="index % 2 == 0" class="py-2">
         <mdb-col lg="4" col="12" class="pr-lg-5">
-          <img :src="quote.url" :alt="quote.alt" class="img-fluid p-5" />
+          <img :src="quote.url" :alt="quote.alt" class="img-fluid p-5">
           <div class="name bg-primary text-white p-2 mb-5 text-center">
             <h3>{{ quote.name }}</h3>
           </div>
         </mdb-col>
         <mdb-col lg="8" col="12" class="bg-secondary">
-          <div class="p-5" v-html="quote.content"></div>
+          <div class="p-5" v-html="quote.content" />
         </mdb-col>
       </mdb-row>
 
       <mdb-row v-else class="py-2">
         <mdb-col lg="8" col="12" class="bg-secondary order-lg-0 order-1">
-          <div class="p-5" v-html="quote.content"></div>
+          <div class="p-5" v-html="quote.content" />
         </mdb-col>
         <mdb-col lg="4" col="12" class="order-lg-1 order-0 pl-lg-5">
-          <img :src="quote.url" :alt="quote.alt" class="img-fluid p-5" />
+          <img :src="quote.url" :alt="quote.alt" class="img-fluid p-5">
           <div class="name bg-primary text-white p-2 mb-5 text-center">
             <h3>{{ quote.name }}</h3>
           </div>
@@ -108,17 +108,22 @@ export default {
       post: {},
     }
   },
+  async fetch({ store, route }) {
+    this.slug = route.params.slug
+    await store.dispatch('posts/setPostSlug', this.slug)
+  },
   head() {
+    const post = this.$store.getters['posts/getPost']
     return {
-      title: this.post.title,
+      title: post.title,
       meta: [
         {
           property: 'og:title',
-          content: this.post.title,
+          content: post.title,
         },
         {
           property: 'og:description',
-          content: this.post.excerpt,
+          content: post.excerpt,
         },
         {
           property: 'og:url',
@@ -126,7 +131,7 @@ export default {
         },
         {
           property: 'og:image',
-          content: this.post.url,
+          content: post.url,
         },
         { property: 'og:site_name', content: 'Team Parker Racing' },
         { property: 'og:type', content: 'post' },
@@ -134,14 +139,14 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.post.excerpt,
+          content: post.excerpt,
         },
       ],
     }
   },
   created() {
-    const slug = this.$route.params.slug
-    this.$store.dispatch('posts/setPostSlug', slug).then((data) => {
+    this.slug = this.$route.params.slug
+    this.$store.dispatch('posts/setPostSlug', this.slug).then((data) => {
       this.post = data
     })
   },

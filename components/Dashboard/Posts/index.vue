@@ -3,15 +3,19 @@
     <mdb-container>
       <mdb-tab pills justify color="primary" class="mt-4 mx-4">
         <mdb-tab-item>
-          <NuxtLink to="/featured"> Featured </NuxtLink>
+          <NuxtLink to="/featured">
+            Featured
+          </NuxtLink>
         </mdb-tab-item>
         <mdb-tab-item>
-          <NuxtLink to="/news"> News </NuxtLink>
+          <NuxtLink to="/news">
+            News
+          </NuxtLink>
         </mdb-tab-item>
       </mdb-tab>
     </mdb-container>
 
-    <router-view class="pt-3"> </router-view>
+    <nuxt-view class="pt-3" />
   </div>
 </template>
 

@@ -1,133 +1,125 @@
 <template>
   <div>
-    <h1 class="text-center w-100">Drivers</h1>
+    <h1 class="text-center w-100">
+      Drivers
+    </h1>
     <mdb-container>
       <mdb-row>
         <mdb-col class="text-center pt-2 offset-3" col="6">
-          <img
-            v-if="driver.url"
-            :src="driver.url"
-            :alt="img.alt"
-            class="img-fluid"
-          />
-
-          <img
-            v-else
-            :src="defaultImage"
-            alt="Placeholder image"
-            class="img-fluid"
-          />
+          <helpers-image-handler :image.sync="driver.img" :image-list="images" />
         </mdb-col>
 
         <mdb-col col="12">
-          <form class="pt-2" @submit.prevent="submitForm">
-            <div class="row">
-              <div class="md-form col-4 p-0">
-                <mdb-btn
-                  color="primary"
-                  class="ml-3"
-                  inline
-                  @click.native="newImage('driver')"
-                  >Driver Image</mdb-btn
-                >
-              </div>
-            </div>
-
-            <div class="md-form">
-              <mdb-input v-model.trim="driver.name" label="Name" inline />
-            </div>
-            <div class="md-form">
+          <div class="md-form">
+            <mdb-input v-model.trim="driver.name" label="Name" inline />
+          </div>
+          <div class="md-form">
+            <mdb-input
+              v-model.trim="driver.partners"
+              label="Partners"
+              inline
+            />
+          </div>
+          <div class="md-form">
+            <mdb-input
+              v-model.trim="driver.nationality"
+              label="Nationality"
+              inline
+            />
+          </div>
+          <div class="md-form">
+            <mdb-input v-model.trim="driver.series" label="Series" inline />
+          </div>
+          <!-- social  -->
+          <mdb-col class="col-12 text-center pb-4">
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Facebook link</span>
               <mdb-input
-                v-model.trim="driver.partners"
-                label="Partners"
-                inline
+                slot="body"
+                v-model="driver.social.facebook"
+                label="Facebook link"
               />
-            </div>
-            <div class="md-form">
+              <mdb-btn slot="reference">
+                Facebook
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">insta link</span>
               <mdb-input
-                v-model.trim="driver.nationality"
-                label="Nationality"
-                inline
+                slot="body"
+                v-model="driver.social.insta"
+                label="insta link"
               />
-            </div>
-            <div class="md-form">
-              <mdb-input v-model.trim="driver.series" label="Series" inline />
-            </div>
-            <!-- social  -->
-            <mdb-col class="col-12 text-center pb-4">
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Facebook link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="driver.social.facebook"
-                  label="Facebook link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Facebook</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">insta link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="driver.social.insta"
-                  label="insta link"
-                ></mdb-input>
-                <mdb-btn slot="reference">insta</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Twitter link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="driver.social.twitter"
-                  label="Twitter link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Twitter</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Google+ link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="driver.social.gplus"
-                  label="Gplus link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Google+</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Twitch link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="driver.social.twitch"
-                  label="Twitch link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Twitch</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Pinterest link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="driver.social.pinterest"
-                  label="Pinterest link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Pinterest</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Youtube link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="driver.social.youtube"
-                  label="Youtube link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Youtube</mdb-btn>
-              </mdb-popover>
-            </mdb-col>
+              <mdb-btn slot="reference">
+                insta
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Twitter link</span>
+              <mdb-input
+                slot="body"
+                v-model="driver.social.twitter"
+                label="Twitter link"
+              />
+              <mdb-btn slot="reference">
+                Twitter
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Google+ link</span>
+              <mdb-input
+                slot="body"
+                v-model="driver.social.gplus"
+                label="Gplus link"
+              />
+              <mdb-btn slot="reference">
+                Google+
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Twitch link</span>
+              <mdb-input
+                slot="body"
+                v-model="driver.social.twitch"
+                label="Twitch link"
+              />
+              <mdb-btn slot="reference">
+                Twitch
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Pinterest link</span>
+              <mdb-input
+                slot="body"
+                v-model="driver.social.pinterest"
+                label="Pinterest link"
+              />
+              <mdb-btn slot="reference">
+                Pinterest
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Youtube link</span>
+              <mdb-input
+                slot="body"
+                v-model="driver.social.youtube"
+                label="Youtube link"
+              />
+              <mdb-btn slot="reference">
+                Youtube
+              </mdb-btn>
+            </mdb-popover>
+          </mdb-col>
 
-            <mdb-btn color="primary" type="submit">Add driver</mdb-btn>
-          </form>
+          <mdb-btn color="primary" @click.native="submitForm">
+            Add driver
+          </mdb-btn>
         </mdb-col>
       </mdb-row>
     </mdb-container>
 
     <transition name="fade">
-      <app-message :msg="msg"></app-message>
+      <ui-message :msg="msg" />
     </transition>
 
     <mdb-container fluid class="p-0 pt-5">
@@ -136,13 +128,19 @@
           <table class="table">
             <thead class="black text-white">
               <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Action</th>
+                <th scope="col">
+                  Title
+                </th>
+                <th scope="col">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(driver, index) in paginatedData" :key="index">
-                <th scope="row">{{ driver.name }}</th>
+                <th scope="row">
+                  {{ driver.name }}
+                </th>
                 <td>
                   <a class="mr-1" @click="editDriver(driver)">
                     <mdb-icon icon="edit" />
@@ -187,127 +185,134 @@
         <mdb-modal-title>{{ clickedDriver.name }}</mdb-modal-title>
       </mdb-modal-header>
       <mdb-modal-body>
-        <form class="p-2 container-fluid" @submit.prevent>
-          <mdb-row class="d-flex flex-center">
-            <mdb-col col="6">
-              <img
-                v-if="clickedDriver.url"
-                :src="clickedDriver.url"
-                class="img-fluid"
-              />
-            </mdb-col>
-            <mdb-col col="6" class="d-flex flex-center">
-              <mdb-btn color="primary" @click.native="newImage('editDriver')"
-                >Change image</mdb-btn
-              >
-            </mdb-col>
+        <mdb-row class="d-flex flex-center">
+          <mdb-col col="6">
+            <helpers-image-handler :image.sync="clickedDriver.img" :image-list="images" />
+          </mdb-col>
 
-            <mdb-col col="4" class="md-form">
-              <mdb-input
-                v-model.trim="clickedDriver.name"
-                label="Title"
-                inline
-              />
-            </mdb-col>
+          <mdb-col col="4" class="md-form">
+            <mdb-input
+              v-model.trim="clickedDriver.name"
+              label="Title"
+              inline
+            />
+          </mdb-col>
 
-            <mdb-col col="8" class="md-form">
+          <mdb-col col="8" class="md-form">
+            <mdb-input
+              v-model.trim="clickedDriver.partners"
+              label="Partners"
+              inline
+            />
+          </mdb-col>
+          <mdb-col col="4" class="md-form">
+            <mdb-input
+              v-model.trim="clickedDriver.nationality"
+              label="Nationality"
+              inline
+            />
+          </mdb-col>
+          <mdb-col col="8" class="md-form">
+            <mdb-input
+              v-model.trim="clickedDriver.series"
+              label="Series"
+              inline
+            />
+          </mdb-col>
+          <!-- social  -->
+          <mdb-col class="col-12 text-center pb-4">
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Facebook link</span>
               <mdb-input
-                v-model.trim="clickedDriver.partners"
-                label="Partners"
-                inline
+                slot="body"
+                v-model="clickedDriver.social.facebook"
+                label="Facebook link"
               />
-            </mdb-col>
-            <mdb-col col="4" class="md-form">
+              <mdb-btn slot="reference">
+                Facebook
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">insta link</span>
               <mdb-input
-                v-model.trim="clickedDriver.nationality"
-                label="Nationality"
-                inline
+                slot="body"
+                v-model="clickedDriver.social.insta"
+                label="insta link"
               />
-            </mdb-col>
-            <mdb-col col="8" class="md-form">
+              <mdb-btn slot="reference">
+                insta
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Twitter link</span>
               <mdb-input
-                v-model.trim="clickedDriver.series"
-                label="Series"
-                inline
+                slot="body"
+                v-model="clickedDriver.social.twitter"
+                label="Twitter link"
               />
-            </mdb-col>
-            <!-- social  -->
-            <mdb-col class="col-12 text-center pb-4">
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Facebook link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="clickedDriver.social.facebook"
-                  label="Facebook link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Facebook</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">insta link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="clickedDriver.social.insta"
-                  label="insta link"
-                ></mdb-input>
-                <mdb-btn slot="reference">insta</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Twitter link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="clickedDriver.social.twitter"
-                  label="Twitter link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Twitter</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Google+ link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="clickedDriver.social.gplus"
-                  label="Gplus link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Google+</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Twitch link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="clickedDriver.social.twitch"
-                  label="Twitch link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Twitch</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Pinterest link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="clickedDriver.social.pinterest"
-                  label="Pinterest link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Pinterest</mdb-btn>
-              </mdb-popover>
-              <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
-                <span slot="header">Youtube link</span>
-                <mdb-input
-                  slot="body"
-                  v-model="clickedDriver.social.youtube"
-                  label="Youtube link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Youtube</mdb-btn>
-              </mdb-popover>
-            </mdb-col>
-          </mdb-row>
-        </form>
+              <mdb-btn slot="reference">
+                Twitter
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Google+ link</span>
+              <mdb-input
+                slot="body"
+                v-model="clickedDriver.social.gplus"
+                label="Gplus link"
+              />
+              <mdb-btn slot="reference">
+                Google+
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Twitch link</span>
+              <mdb-input
+                slot="body"
+                v-model="clickedDriver.social.twitch"
+                label="Twitch link"
+              />
+              <mdb-btn slot="reference">
+                Twitch
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Pinterest link</span>
+              <mdb-input
+                slot="body"
+                v-model="clickedDriver.social.pinterest"
+                label="Pinterest link"
+              />
+              <mdb-btn slot="reference">
+                Pinterest
+              </mdb-btn>
+            </mdb-popover>
+            <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
+              <span slot="header">Youtube link</span>
+              <mdb-input
+                slot="body"
+                v-model="clickedDriver.social.youtube"
+                label="Youtube link"
+              />
+              <mdb-btn slot="reference">
+                Youtube
+              </mdb-btn>
+            </mdb-popover>
+          </mdb-col>
+        </mdb-row>
       </mdb-modal-body>
       <mdb-container>
         <transition name="fade">
-          <app-message :msg="editMsg"></app-message>
+          <ui-message :msg="editMsg" />
         </transition>
       </mdb-container>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" @click.native="cancelEdit">Close</mdb-btn>
-        <mdb-btn color="primary" @click.native="saveEdit">Save changes</mdb-btn>
+        <mdb-btn color="secondary" @click.native="cancelEdit">
+          Close
+        </mdb-btn>
+        <mdb-btn color="primary" @click.native="saveEdit">
+          Save changes
+        </mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
@@ -320,12 +325,16 @@
       @close="deleteModal = false"
     >
       <mdb-modal-body class="text-center">
-        <span class="text-danger"
-          >Are you sure you want to delete this driver</span
-        >
+        <span
+          class="text-danger"
+        >Are you sure you want to delete this driver</span>
         {{ toDeleteDriver.name }}
-        <mdb-btn color="secondary" @click.native="cancelDelete">Close</mdb-btn>
-        <mdb-btn color="danger" @click.native="confirmDelete">Delete</mdb-btn>
+        <mdb-btn color="secondary" @click.native="cancelDelete">
+          Close
+        </mdb-btn>
+        <mdb-btn color="danger" @click.native="confirmDelete">
+          Delete
+        </mdb-btn>
       </mdb-modal-body>
     </mdb-modal>
 
@@ -338,21 +347,29 @@
         <div class="row col-12 col-md-6 col-lg-4 py-3">
           <p>Would you like to use this one ?</p>
         </div>
-        <img :src="img.content.url" :alt="img.content.alt" class="img-fluid" />
+        <img :src="img.content.url" :alt="img.content.alt" class="img-fluid">
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" size="sm" @click.native="declineUse"
-          >No</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="sm"
+          @click.native="declineUse"
         >
-        <mdb-btn color="primary" size="sm" @click.native="confirmUse"
-          >Yes</mdb-btn
+          No
+        </mdb-btn>
+        <mdb-btn
+          color="primary"
+          size="sm"
+          @click.native="confirmUse"
         >
+          Yes
+        </mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
     <!-- uploadImage -->
     <mdb-modal size="md" :show="uploadImage" @close="closeImageUpload">
-      <app-loader></app-loader>
+      <ui-loader />
       <mdb-modal-header>
         <mdb-modal-title>Upload image</mdb-modal-title>
       </mdb-modal-header>
@@ -377,35 +394,41 @@
                   aria-describedby="imageInput"
                   accept="image/jpeg image/png"
                   @change="checkFile($event)"
-                />
+                >
                 <label
                   v-if="file.name"
                   class="custom-file-label"
                   for="inputGroupFile01"
-                  >{{ file.name }}</label
-                >
-                <label v-else class="custom-file-label" for="inputGroupFile01"
-                  >Image</label
-                >
+                >{{ file.name }}</label>
+                <label
+                  v-else
+                  class="custom-file-label"
+                  for="inputGroupFile01"
+                >Image</label>
               </div>
             </div>
           </div>
         </div>
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" size="sm" @click.native="closeImageUpload"
-          >Close</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="sm"
+          @click.native="closeImageUpload"
         >
+          Close
+        </mdb-btn>
         <mdb-btn
           color="primary"
           size="sm"
           :disabled="img.alt == ''"
           @click="saveFile(type)"
-          >Save</mdb-btn
         >
+          Save
+        </mdb-btn>
       </mdb-modal-footer>
       <transition name="fade">
-        <app-message :msg="uploadMsg"></app-message>
+        <ui-message :msg="uploadMsg" />
       </transition>
     </mdb-modal>
   </div>
@@ -453,11 +476,12 @@ export default {
   data() {
     return {
       driver: {
+        img: {
+          url: '',
+          alt: '',
+        },
         slug: '',
-        url: '',
         name: '',
-        imgId: '',
-        alt: '',
         social: {
           facebook: '',
           website: '',
@@ -482,12 +506,13 @@ export default {
         title: '',
       },
       clickedDriver: {
+        img: {
+          url: '',
+          alt: '',
+        },
         id: '',
         name: '',
         slug: '',
-        imgId: '',
-        url: '',
-        alt: '',
         social: {
           facebook: '',
           website: '',
@@ -519,6 +544,9 @@ export default {
     drivers() {
       return this.$store.getters['drivers/getDrivers']
     },
+    images() {
+      return this.$store.getters['images/getDriverImages']
+    },
     uploadMsg() {
       return this.$store.getters['images/getMsg']
     },
@@ -538,9 +566,10 @@ export default {
       this.driver = {
         name: '',
         slug: '',
-        imgId: '',
-        url: '',
-        alt: '',
+        img:{
+          url: '',
+          alt: '',
+        },
         partners: '',
         nationality: '',
         series: '',
@@ -575,8 +604,9 @@ export default {
 
       this.driver.slug = newSlug.join('-')
 
-      if (this.driver.url === '') {
-        this.driver.url = this.defaultImage
+      if (this.driver.img.url === '') {
+        this.driver.img.url = this.defaultImage
+        this.driver.img.alt = "Placeholder Img"
       }
 
       driversCollection
@@ -584,9 +614,8 @@ export default {
           name: this.driver.name,
           slug: this.driver.slug,
           createdOn: new Date(),
-          imgId: this.driver.imgId,
-          url: this.driver.url,
-          alt: this.driver.alt,
+          url: this.driver.img.url,
+          alt: this.driver.img.alt,
           social: this.driver.social,
           partners: this.driver.partners,
           nationality: this.driver.nationality,
@@ -784,9 +813,8 @@ export default {
       this.clickedDriver.id = driver.id
       this.clickedDriver.name = driver.name
       this.clickedDriver.slug = driver.slug
-      this.clickedDriver.url = driver.url
-      this.clickedDriver.imgId = driver.imgId
-      this.clickedDriver.alt = driver.alt
+      this.clickedDriver.img.url = driver.url
+      this.clickedDriver.img.alt = driver.alt
       this.clickedDriver.social = driver.social
       this.clickedDriver.partners = driver.partners
       this.clickedDriver.nationality = driver.nationality
@@ -820,9 +848,8 @@ export default {
           name: this.clickedDriver.name,
           slug: this.clickedDriver.slug,
           createdOn: new Date(),
-          imgId: this.clickedDriver.imgId,
-          url: this.clickedDriver.url,
-          alt: this.clickedDriver.alt,
+          url: this.clickedDriver.img.url,
+          alt: this.clickedDriver.img.alt,
           social: this.clickedDriver.social,
           partners: this.clickedDriver.partners,
           nationality: this.clickedDriver.nationality,

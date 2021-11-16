@@ -1,15 +1,23 @@
 <template>
-  <div
-    v-if="msg.message != ''"
-    :class="`bg-${msg.type}`"
+  <mdb-alert
+    :color="msg.type"
     class="pl-5 mt-2 text-white text-center"
   >
-    <p>{{ msg.message }}</p>
-  </div>
+    {{ msg.message }}
+  </mdb-alert>
 </template>
 
 <script>
+import {mdbAlert} from 'mdbvue'
 export default {
-  props: ["msg"],
+  components: {
+    mdbAlert
+  },
+  props: {
+    msg: {
+      type: Object,
+      default: () => {}
+    }
+  },
 };
 </script>

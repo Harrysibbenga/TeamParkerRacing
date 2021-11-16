@@ -2,7 +2,9 @@
   <div>
     <mdb-container fluid class="bg-secondary py-5">
       <mdb-row class="py-5">
-        <h2 class="p-3">Filters</h2>
+        <h2 class="p-3">
+          Filters
+        </h2>
         <mdb-col col="12">
           <mdb-btn outline="white" size="sm" @click.native="filtered = null">
             All
@@ -27,7 +29,7 @@
           lg="4"
           class="p-3"
         >
-          <UICard :post="post"></UICard>
+          <ui-card :post="post" />
         </mdb-col>
       </mdb-row>
 
@@ -39,7 +41,7 @@
           lg="4"
           class="p-3"
         >
-          <UICard :post="post"></UICard>
+          <ui-card :post="post" />
         </mdb-col>
       </mdb-row>
     </mdb-container>
@@ -48,6 +50,8 @@
 
 <script>
 import { mdbContainer, mdbRow, mdbCol, mdbBtn } from 'mdbvue'
+import { cloneDeep } from 'lodash'
+
 export default {
   components: {
     mdbContainer,
@@ -58,51 +62,29 @@ export default {
   data() {
     return {
       filtered: null,
-      tags: [
-        {
-          id: '08IsKXOBTGJVEZ1vNVvT',
-          name: 'GT World Challenge Europe',
-        },
-        {
-          id: '60lkQOTDAmEJKCJf5GRS',
-          name: 'British GT Championship',
-        },
-        {
-          id: 'DLNAdVjiLgowJThuNBQA',
-          name: 'British Touring Car Championship',
-        },
-        {
-          id: 'QEKnqhy3orGDLQ1cw5f6',
-          name: 'Porsche Sprint Challenge GB',
-        },
-        {
-          id: 'Wjs0KxlqFYchbGhKDYRy',
-          name: 'Porsche Carrera Cup GB',
-        },
-        {
-          id: 'M2cavN6tcJgZ03XSUr2Y',
-          name: 'Caterham Series',
-        },
-      ],
     }
   },
   computed: {
     championships() {
-      const championships = this.$store.getters['championships/getPosts']
+      const championships = cloneDeep(this.$store.getters['championships/getPosts'])
       championships.forEach((post) => {
         post.type = 'championship'
       })
       return championships
     },
     posts() {
-      const posts = this.$store.getters['posts/getPosts']
+      const posts = cloneDeep(this.$store.getters['posts/getPublishedPosts'])
       posts.forEach((post) => {
         post.type = 'post'
       })
       return posts
     },
+    tags() {
+      const tags = this.$store.getters['tags/getTags']
+      return tags.filter(tag => tag.active === true)
+    },
     featured() {
-      const featured = this.$store.getters['featured/getPosts']
+      const featured = cloneDeep(this.$store.getters['featured/getPosts'])
       featured.forEach((post) => {
         post.type = 'featured'
       })

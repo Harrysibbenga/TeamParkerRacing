@@ -15,11 +15,13 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
+  resolveStoreModules(require('../store/videos/index.js'), 'videos/index.js')
   resolveStoreModules(require('../store/users/index.js'), 'users/index.js')
   resolveStoreModules(require('../store/tags/index.js'), 'tags/index.js')
   resolveStoreModules(require('../store/posts/index.js'), 'posts/index.js')
   resolveStoreModules(require('../store/menu/index.js'), 'menu/index.js')
   resolveStoreModules(require('../store/images/index.js'), 'images/index.js')
+  resolveStoreModules(require('../store/headline/index.js'), 'headline/index.js')
   resolveStoreModules(require('../store/global/index.js'), 'global/index.js')
   resolveStoreModules(require('../store/featured/index.js'), 'featured/index.js')
   resolveStoreModules(require('../store/drivers/index.js'), 'drivers/index.js')

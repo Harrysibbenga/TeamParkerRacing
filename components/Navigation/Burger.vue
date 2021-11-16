@@ -1,18 +1,21 @@
 <template>
   <div id="burger" :class="{ active: toggle }">
-    <slot>
-      <button type="button" class="burger-button" title="Menu">
-        <span class="hidden">Toggle menu</span>
-        <span class="burger-bar burger-bar--1"></span>
-        <span class="burger-bar burger-bar--2"></span>
-        <span class="burger-bar burger-bar--3"></span>
-      </button>
-    </slot>
+    <button type="button" class="burger-button" title="Menu">
+      <span class="hidden">Toggle menu</span>
+      <span class="burger-bar burger-bar--1" />
+      <span class="burger-bar burger-bar--2" />
+      <span class="burger-bar burger-bar--3" />
+    </button>
   </div>
 </template>
 <script>
 export default {
-  props: ["toggle"],
+  props:{
+    toggle: {
+      type: Boolean,
+      default:false,
+    }
+  },
 };
 </script>
 <style>
@@ -32,7 +35,7 @@ button:focus {
 .burger-button {
   position: relative;
   height: 32px;
-  width: 32px;
+  width: 30px;
   display: block;
   z-index: 999;
   border: 0;
@@ -48,7 +51,7 @@ button:focus {
   top: 50%;
   right: 2px;
   left: 2px;
-  height: 4px;
+  height: 3px;
   width: auto;
   margin-top: -1px;
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
@@ -65,7 +68,7 @@ button:focus {
 .burger-bar--2 {
   transform-origin: 100% 50%;
   transform: scaleX(0.8);
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .burger-button:hover .burger-bar--2 {
@@ -78,7 +81,7 @@ button:focus {
 
 .burger-bar--3 {
   transform: translateY(6px);
-  margin-top: 4.5px;
+  margin-top: 3.5px;
 }
 
 #burger.active .burger-button {

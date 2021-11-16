@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 class="text-center w-100">Drivers</h1>
+    <h1 class="text-center w-100">
+      Drivers
+    </h1>
     <mdb-container>
       <mdb-row>
         <mdb-col class="text-center pt-2 offset-3" col="6">
@@ -9,14 +11,14 @@
             :src="driver.url"
             :alt="img.alt"
             class="img-fluid"
-          />
+          >
 
           <img
             v-else
             :src="defaultImage"
             alt="Placeholder image"
             class="img-fluid"
-          />
+          >
         </mdb-col>
 
         <mdb-col col="12">
@@ -28,8 +30,9 @@
                   class="ml-3"
                   inline
                   @click.native="newImage('driver')"
-                  >Driver Image</mdb-btn
                 >
+                  Driver Image
+                </mdb-btn>
               </div>
             </div>
 
@@ -61,8 +64,10 @@
                   slot="body"
                   v-model="driver.social.facebook"
                   label="Facebook link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Facebook</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Facebook
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">insta link</span>
@@ -70,8 +75,10 @@
                   slot="body"
                   v-model="driver.social.insta"
                   label="insta link"
-                ></mdb-input>
-                <mdb-btn slot="reference">insta</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  insta
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Twitter link</span>
@@ -79,8 +86,10 @@
                   slot="body"
                   v-model="driver.social.twitter"
                   label="Twitter link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Twitter</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Twitter
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Google+ link</span>
@@ -88,8 +97,10 @@
                   slot="body"
                   v-model="driver.social.gplus"
                   label="Gplus link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Google+</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Google+
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Twitch link</span>
@@ -97,8 +108,10 @@
                   slot="body"
                   v-model="driver.social.twitch"
                   label="Twitch link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Twitch</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Twitch
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Pinterest link</span>
@@ -106,8 +119,10 @@
                   slot="body"
                   v-model="driver.social.pinterest"
                   label="Pinterest link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Pinterest</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Pinterest
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Youtube link</span>
@@ -115,19 +130,23 @@
                   slot="body"
                   v-model="driver.social.youtube"
                   label="Youtube link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Youtube</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Youtube
+                </mdb-btn>
               </mdb-popover>
             </mdb-col>
 
-            <mdb-btn color="primary" type="submit">Add driver</mdb-btn>
+            <mdb-btn color="primary" type="submit">
+              Add driver
+            </mdb-btn>
           </form>
         </mdb-col>
       </mdb-row>
     </mdb-container>
 
     <transition name="fade">
-      <app-message :msg="msg"></app-message>
+      <ui-message :msg="msg" />
     </transition>
 
     <mdb-container fluid class="p-0 pt-5">
@@ -136,13 +155,19 @@
           <table class="table">
             <thead class="black text-white">
               <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Action</th>
+                <th scope="col">
+                  Title
+                </th>
+                <th scope="col">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(driver, index) in paginatedData" :key="index">
-                <th scope="row">{{ driver.name }}</th>
+                <th scope="row">
+                  {{ driver.name }}
+                </th>
                 <td>
                   <a class="mr-1" @click="editDriver(driver)">
                     <mdb-icon icon="edit" />
@@ -194,12 +219,15 @@
                 v-if="clickedDriver.url"
                 :src="clickedDriver.url"
                 class="img-fluid"
-              />
+              >
             </mdb-col>
             <mdb-col col="6" class="d-flex flex-center">
-              <mdb-btn color="primary" @click.native="newImage('editDriver')"
-                >Change image</mdb-btn
+              <mdb-btn
+                color="primary"
+                @click.native="newImage('editDriver')"
               >
+                Change image
+              </mdb-btn>
             </mdb-col>
 
             <mdb-col col="4" class="md-form">
@@ -239,8 +267,10 @@
                   slot="body"
                   v-model="clickedDriver.social.facebook"
                   label="Facebook link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Facebook</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Facebook
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">insta link</span>
@@ -248,8 +278,10 @@
                   slot="body"
                   v-model="clickedDriver.social.insta"
                   label="insta link"
-                ></mdb-input>
-                <mdb-btn slot="reference">insta</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  insta
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Twitter link</span>
@@ -257,8 +289,10 @@
                   slot="body"
                   v-model="clickedDriver.social.twitter"
                   label="Twitter link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Twitter</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Twitter
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Google+ link</span>
@@ -266,8 +300,10 @@
                   slot="body"
                   v-model="clickedDriver.social.gplus"
                   label="Gplus link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Google+</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Google+
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Twitch link</span>
@@ -275,8 +311,10 @@
                   slot="body"
                   v-model="clickedDriver.social.twitch"
                   label="Twitch link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Twitch</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Twitch
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Pinterest link</span>
@@ -284,8 +322,10 @@
                   slot="body"
                   v-model="clickedDriver.social.pinterest"
                   label="Pinterest link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Pinterest</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Pinterest
+                </mdb-btn>
               </mdb-popover>
               <mdb-popover trigger="click" :options="{ placement: 'bottom' }">
                 <span slot="header">Youtube link</span>
@@ -293,8 +333,10 @@
                   slot="body"
                   v-model="clickedDriver.social.youtube"
                   label="Youtube link"
-                ></mdb-input>
-                <mdb-btn slot="reference">Youtube</mdb-btn>
+                />
+                <mdb-btn slot="reference">
+                  Youtube
+                </mdb-btn>
               </mdb-popover>
             </mdb-col>
           </mdb-row>
@@ -302,12 +344,16 @@
       </mdb-modal-body>
       <mdb-container>
         <transition name="fade">
-          <app-message :msg="editMsg"></app-message>
+          <ui-message :msg="editMsg" />
         </transition>
       </mdb-container>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" @click.native="cancelEdit">Close</mdb-btn>
-        <mdb-btn color="primary" @click.native="saveEdit">Save changes</mdb-btn>
+        <mdb-btn color="secondary" @click.native="cancelEdit">
+          Close
+        </mdb-btn>
+        <mdb-btn color="primary" @click.native="saveEdit">
+          Save changes
+        </mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
@@ -320,12 +366,16 @@
       @close="deleteModal = false"
     >
       <mdb-modal-body class="text-center">
-        <span class="text-danger"
-          >Are you sure you want to delete this driver</span
-        >
+        <span
+          class="text-danger"
+        >Are you sure you want to delete this driver</span>
         {{ toDeleteDriver.name }}
-        <mdb-btn color="secondary" @click.native="cancelDelete">Close</mdb-btn>
-        <mdb-btn color="danger" @click.native="confirmDelete">Delete</mdb-btn>
+        <mdb-btn color="secondary" @click.native="cancelDelete">
+          Close
+        </mdb-btn>
+        <mdb-btn color="danger" @click.native="confirmDelete">
+          Delete
+        </mdb-btn>
       </mdb-modal-body>
     </mdb-modal>
 
@@ -338,21 +388,29 @@
         <div class="row col-12 col-md-6 col-lg-4 py-3">
           <p>Would you like to use this one ?</p>
         </div>
-        <img :src="img.content.url" :alt="img.content.alt" class="img-fluid" />
+        <img :src="img.content.url" :alt="img.content.alt" class="img-fluid">
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" size="sm" @click.native="declineUse"
-          >No</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="sm"
+          @click.native="declineUse"
         >
-        <mdb-btn color="primary" size="sm" @click.native="confirmUse"
-          >Yes</mdb-btn
+          No
+        </mdb-btn>
+        <mdb-btn
+          color="primary"
+          size="sm"
+          @click.native="confirmUse"
         >
+          Yes
+        </mdb-btn>
       </mdb-modal-footer>
     </mdb-modal>
 
     <!-- uploadImage -->
     <mdb-modal size="md" :show="uploadImage" @close="closeImageUpload">
-      <app-loader></app-loader>
+      <ui-loader />
       <mdb-modal-header>
         <mdb-modal-title>Upload image</mdb-modal-title>
       </mdb-modal-header>
@@ -377,42 +435,47 @@
                   aria-describedby="imageInput"
                   accept="image/jpeg image/png"
                   @change="checkFile($event)"
-                />
+                >
                 <label
                   v-if="file.name"
                   class="custom-file-label"
                   for="inputGroupFile01"
-                  >{{ file.name }}</label
-                >
-                <label v-else class="custom-file-label" for="inputGroupFile01"
-                  >Image</label
-                >
+                >{{ file.name }}</label>
+                <label
+                  v-else
+                  class="custom-file-label"
+                  for="inputGroupFile01"
+                >Image</label>
               </div>
             </div>
           </div>
         </div>
       </mdb-modal-body>
       <mdb-modal-footer>
-        <mdb-btn color="secondary" size="sm" @click.native="closeImageUpload"
-          >Close</mdb-btn
+        <mdb-btn
+          color="secondary"
+          size="sm"
+          @click.native="closeImageUpload"
         >
+          Close
+        </mdb-btn>
         <mdb-btn
           color="primary"
           size="sm"
           :disabled="img.alt == ''"
           @click="saveFile(type)"
-          >Save</mdb-btn
         >
+          Save
+        </mdb-btn>
       </mdb-modal-footer>
       <transition name="fade">
-        <app-message :msg="uploadMsg"></app-message>
+        <ui-message :msg="uploadMsg" />
       </transition>
     </mdb-modal>
   </div>
 </template>
 
 <script>
-import { driversCollection, driverImgCollection } from '@/services/firebase'
 import {
   mdbInput,
   mdbBtn,
@@ -427,6 +490,7 @@ import {
   mdbModal,
   mdbPopover,
 } from 'mdbvue'
+import { driversCollection, driverImgCollection } from '@/services/firebase'
 
 export default {
   components: {

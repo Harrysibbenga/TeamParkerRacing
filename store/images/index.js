@@ -39,8 +39,6 @@ export const actions = {
       const storageRef = storage.ref('images/' + file.name)
       const uploadTask = storageRef.put(file)
 
-      this.$store.dispatch('global/setLoading', true)
-
       uploadTask.on(
         'state_changed',
         () => {

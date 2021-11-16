@@ -9,7 +9,7 @@
             height="100%"
             frameborder="0"
             style="border: 0"
-          ></iframe>
+          />
         </mdb-col>
       </mdb-row>
     </mdb-container>
